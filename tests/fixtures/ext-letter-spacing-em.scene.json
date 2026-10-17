@@ -1,0 +1,52 @@
+{
+  "aerender": 1,
+  "variables": {
+    "track": {
+      "type": "string",
+      "value": "0.16em"
+    }
+  },
+  "children": [
+    {
+      "id": "root",
+      "type": "frame",
+      "name": "letter-spacing-em",
+      "fill": "#181818",
+      "padding": 24,
+      "gap": 16,
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "t1",
+          "type": "text",
+          "name": "Em",
+          "content": "EYEBROW",
+          "letterSpacing": "0.16em",
+          "fontFamily": "Inter Tight",
+          "fontSize": 16,
+          "fill": "#F7F7F7"
+        },
+        {
+          "id": "t2",
+          "type": "text",
+          "name": "Px",
+          "content": "EYEBROW",
+          "letterSpacing": 2.56,
+          "fontFamily": "Inter Tight",
+          "fontSize": 16,
+          "fill": "#F7F7F7"
+        },
+        {
+          "id": "t3",
+          "type": "text",
+          "name": "Var",
+          "content": "EYEBROW",
+          "letterSpacing": "$track",
+          "fontFamily": "Inter Tight",
+          "fontSize": 16,
+          "fill": "#F7F7F7"
+        }
+      ]
+    }
+  ]
+}

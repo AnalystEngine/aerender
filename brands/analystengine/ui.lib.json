@@ -1,0 +1,1578 @@
+{
+  "aerender": 1,
+  "imports": {
+    "t": "tokens.lib.json"
+  },
+  "variables": {},
+  "children": [
+    {
+      "type": "frame",
+      "width": 32,
+      "height": 32,
+      "fill": "$t:ae-bg-elev",
+      "cornerRadius": "$t:ae-r-2",
+      "stroke": {
+        "fill": "$t:ae-rule",
+        "thickness": 1,
+        "align": "inner"
+      },
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uAvatarT",
+          "type": "text",
+          "name": "Initials",
+          "content": "AM",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-micro",
+          "fontWeight": "600",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-fg"
+        }
+      ],
+      "id": "uAvatar",
+      "name": "Avatar",
+      "reusable": true,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "type": "frame",
+      "cornerRadius": "$t:ae-r-1",
+      "gap": "$t:ae-s-2",
+      "padding": [
+        "$t:ae-s-2",
+        "$t:ae-s-4"
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uBtnPrimaryI",
+          "type": "icon",
+          "name": "Icon",
+          "icon": "plus",
+          "library": "lucide",
+          "width": 16,
+          "height": 16,
+          "lineWidth": 1.5,
+          "fill": "$t:ae-bg"
+        },
+        {
+          "id": "uBtnPrimaryL",
+          "type": "text",
+          "name": "Label",
+          "content": "New engagement",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-small",
+          "fontWeight": "600",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-bg"
+        }
+      ],
+      "fill": "$t:ae-accent",
+      "id": "uBtnPrimary",
+      "name": "Button/Primary",
+      "reusable": true,
+      "x": 0,
+      "y": 240
+    },
+    {
+      "type": "frame",
+      "cornerRadius": "$t:ae-r-1",
+      "gap": "$t:ae-s-2",
+      "padding": [
+        "$t:ae-s-2",
+        "$t:ae-s-4"
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uBtnSecondaryI",
+          "type": "icon",
+          "name": "Icon",
+          "icon": "download",
+          "library": "lucide",
+          "width": 16,
+          "height": 16,
+          "lineWidth": 1.5,
+          "fill": "$t:ae-fg"
+        },
+        {
+          "id": "uBtnSecondaryL",
+          "type": "text",
+          "name": "Label",
+          "content": "Export",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-small",
+          "fontWeight": "500",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-fg"
+        }
+      ],
+      "stroke": {
+        "fill": "$t:ae-rule-strong",
+        "thickness": 1,
+        "align": "inner"
+      },
+      "id": "uBtnSecondary",
+      "name": "Button/Secondary",
+      "reusable": true,
+      "x": 520,
+      "y": 240
+    },
+    {
+      "type": "frame",
+      "cornerRadius": "$t:ae-r-1",
+      "gap": "$t:ae-s-2",
+      "padding": [
+        "$t:ae-s-2",
+        "$t:ae-s-4"
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uBtnGhostI",
+          "type": "icon",
+          "name": "Icon",
+          "icon": "arrow-right",
+          "library": "lucide",
+          "width": 16,
+          "height": 16,
+          "lineWidth": 1.5,
+          "fill": "$t:ae-fg-muted"
+        },
+        {
+          "id": "uBtnGhostL",
+          "type": "text",
+          "name": "Label",
+          "content": "View all",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-small",
+          "fontWeight": "500",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-fg-muted"
+        }
+      ],
+      "id": "uBtnGhost",
+      "name": "Button/Ghost",
+      "reusable": true,
+      "x": 1040,
+      "y": 240
+    },
+    {
+      "type": "frame",
+      "width": 32,
+      "height": 32,
+      "cornerRadius": "$t:ae-r-1",
+      "stroke": {
+        "fill": "$t:ae-rule-strong",
+        "thickness": 1,
+        "align": "inner"
+      },
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uBtnIconI",
+          "type": "icon",
+          "name": "Icon",
+          "icon": "ellipsis",
+          "library": "lucide",
+          "width": 16,
+          "height": 16,
+          "lineWidth": 1.5,
+          "fill": "$t:ae-fg-muted"
+        }
+      ],
+      "id": "uBtnIcon",
+      "name": "Button/Icon",
+      "reusable": true,
+      "x": 1560,
+      "y": 240
+    },
+    {
+      "type": "frame",
+      "cornerRadius": "$t:ae-r-pill",
+      "stroke": {
+        "fill": "$t:ae-success",
+        "thickness": 1,
+        "align": "inner"
+      },
+      "gap": "$t:ae-s-2",
+      "padding": [
+        "$t:ae-s-1",
+        "$t:ae-s-3"
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uChipPositiveD",
+          "type": "ellipse",
+          "name": "Dot",
+          "width": 8,
+          "height": 8,
+          "fill": "$t:ae-success"
+        },
+        {
+          "id": "uChipPositiveL",
+          "type": "text",
+          "name": "Label",
+          "content": "On track",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-micro",
+          "fontWeight": "700",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-success",
+          "letterSpacing": "$t:ae-tracking-eyebrow",
+          "textTransform": "uppercase"
+        }
+      ],
+      "id": "uChipPositive",
+      "name": "Status/Positive",
+      "reusable": true,
+      "x": 0,
+      "y": 480
+    },
+    {
+      "type": "frame",
+      "cornerRadius": "$t:ae-r-pill",
+      "stroke": {
+        "fill": "$t:ae-warning",
+        "thickness": 1,
+        "align": "inner"
+      },
+      "gap": "$t:ae-s-2",
+      "padding": [
+        "$t:ae-s-1",
+        "$t:ae-s-3"
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uChipWarningD",
+          "type": "ellipse",
+          "name": "Dot",
+          "width": 8,
+          "height": 8,
+          "fill": "$t:ae-warning"
+        },
+        {
+          "id": "uChipWarningL",
+          "type": "text",
+          "name": "Label",
+          "content": "At risk",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-micro",
+          "fontWeight": "700",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-warning",
+          "letterSpacing": "$t:ae-tracking-eyebrow",
+          "textTransform": "uppercase"
+        }
+      ],
+      "id": "uChipWarning",
+      "name": "Status/Warning",
+      "reusable": true,
+      "x": 520,
+      "y": 480
+    },
+    {
+      "type": "frame",
+      "cornerRadius": "$t:ae-r-pill",
+      "stroke": {
+        "fill": "$t:ae-danger",
+        "thickness": 1,
+        "align": "inner"
+      },
+      "gap": "$t:ae-s-2",
+      "padding": [
+        "$t:ae-s-1",
+        "$t:ae-s-3"
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uChipNegativeD",
+          "type": "ellipse",
+          "name": "Dot",
+          "width": 8,
+          "height": 8,
+          "fill": "$t:ae-danger"
+        },
+        {
+          "id": "uChipNegativeL",
+          "type": "text",
+          "name": "Label",
+          "content": "Overdue",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-micro",
+          "fontWeight": "700",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-danger",
+          "letterSpacing": "$t:ae-tracking-eyebrow",
+          "textTransform": "uppercase"
+        }
+      ],
+      "id": "uChipNegative",
+      "name": "Status/Negative",
+      "reusable": true,
+      "x": 1040,
+      "y": 480
+    },
+    {
+      "type": "frame",
+      "cornerRadius": "$t:ae-r-pill",
+      "stroke": {
+        "fill": "$t:ae-info",
+        "thickness": 1,
+        "align": "inner"
+      },
+      "gap": "$t:ae-s-2",
+      "padding": [
+        "$t:ae-s-1",
+        "$t:ae-s-3"
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uChipInfoD",
+          "type": "ellipse",
+          "name": "Dot",
+          "width": 8,
+          "height": 8,
+          "fill": "$t:ae-info"
+        },
+        {
+          "id": "uChipInfoL",
+          "type": "text",
+          "name": "Label",
+          "content": "In review",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-micro",
+          "fontWeight": "700",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-info",
+          "letterSpacing": "$t:ae-tracking-eyebrow",
+          "textTransform": "uppercase"
+        }
+      ],
+      "id": "uChipInfo",
+      "name": "Status/Info",
+      "reusable": true,
+      "x": 1560,
+      "y": 480
+    },
+    {
+      "type": "frame",
+      "cornerRadius": "$t:ae-r-pill",
+      "stroke": {
+        "fill": "$t:ae-fg-dim",
+        "thickness": 1,
+        "align": "inner"
+      },
+      "gap": "$t:ae-s-2",
+      "padding": [
+        "$t:ae-s-1",
+        "$t:ae-s-3"
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uChipNeutralD",
+          "type": "ellipse",
+          "name": "Dot",
+          "width": 8,
+          "height": 8,
+          "fill": "$t:ae-fg-dim"
+        },
+        {
+          "id": "uChipNeutralL",
+          "type": "text",
+          "name": "Label",
+          "content": "Scoping",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-micro",
+          "fontWeight": "700",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-fg-dim",
+          "letterSpacing": "$t:ae-tracking-eyebrow",
+          "textTransform": "uppercase"
+        }
+      ],
+      "id": "uChipNeutral",
+      "name": "Status/Neutral",
+      "reusable": true,
+      "x": 2080,
+      "y": 480
+    },
+    {
+      "type": "frame",
+      "width": 280,
+      "layout": "vertical",
+      "gap": "$t:ae-s-2",
+      "children": [
+        {
+          "id": "uInputL",
+          "type": "text",
+          "name": "Label",
+          "content": "Client name",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-small",
+          "fontWeight": "500",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-fg-muted"
+        },
+        {
+          "type": "frame",
+          "id": "uInputF",
+          "name": "Field",
+          "width": "fill_container",
+          "fill": "$t:ae-bg-sunken",
+          "cornerRadius": "$t:ae-r-1",
+          "stroke": {
+            "fill": "$t:ae-rule",
+            "thickness": 1,
+            "align": "inner"
+          },
+          "gap": "$t:ae-s-2",
+          "padding": [
+            "$t:ae-s-2",
+            "$t:ae-s-3"
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uInputI",
+              "type": "icon",
+              "name": "Icon",
+              "icon": "search",
+              "library": "lucide",
+              "width": 16,
+              "height": 16,
+              "lineWidth": 1.5,
+              "fill": "$t:ae-fg-dim"
+            },
+            {
+              "id": "uInputV",
+              "type": "text",
+              "name": "Value",
+              "content": "Search clients",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-dim",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            }
+          ]
+        }
+      ],
+      "id": "uInput",
+      "name": "Input",
+      "reusable": true,
+      "x": 0,
+      "y": 720
+    },
+    {
+      "type": "frame",
+      "width": 240,
+      "cornerRadius": "$t:ae-r-1",
+      "gap": "$t:ae-s-3",
+      "padding": [
+        "$t:ae-s-2",
+        "$t:ae-s-3"
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uNavItemI",
+          "type": "icon",
+          "name": "Icon",
+          "icon": "layout-dashboard",
+          "library": "lucide",
+          "width": 20,
+          "height": 20,
+          "lineWidth": 1.5,
+          "fill": "$t:ae-fg-muted"
+        },
+        {
+          "id": "uNavItemL",
+          "type": "text",
+          "name": "Label",
+          "content": "Overview",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-small",
+          "fontWeight": "500",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-fg-muted"
+        }
+      ],
+      "id": "uNavItem",
+      "name": "Nav Item/Default",
+      "reusable": true,
+      "x": 0,
+      "y": 960
+    },
+    {
+      "type": "frame",
+      "width": 240,
+      "cornerRadius": "$t:ae-r-1",
+      "gap": "$t:ae-s-3",
+      "padding": [
+        "$t:ae-s-2",
+        "$t:ae-s-3"
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uNavItemActiveI",
+          "type": "icon",
+          "name": "Icon",
+          "icon": "briefcase",
+          "library": "lucide",
+          "width": 20,
+          "height": 20,
+          "lineWidth": 1.5,
+          "fill": "$t:ae-fg"
+        },
+        {
+          "id": "uNavItemActiveL",
+          "type": "text",
+          "name": "Label",
+          "content": "Engagements",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-small",
+          "fontWeight": "600",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-fg"
+        }
+      ],
+      "fill": "$t:ae-bg-elev",
+      "stroke": {
+        "fill": "$t:ae-accent",
+        "thickness": {
+          "left": 2
+        },
+        "align": "inner"
+      },
+      "id": "uNavItemActive",
+      "name": "Nav Item/Active",
+      "reusable": true,
+      "x": 520,
+      "y": 960
+    },
+    {
+      "type": "frame",
+      "width": 240,
+      "padding": [
+        0,
+        "$t:ae-s-3",
+        "$t:ae-s-2",
+        "$t:ae-s-3"
+      ],
+      "children": [
+        {
+          "id": "uNavSectionL",
+          "type": "text",
+          "name": "Label",
+          "content": "Delivery",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-eyebrow",
+          "fontWeight": "700",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-eyebrow",
+          "letterSpacing": "$t:ae-tracking-eyebrow",
+          "textTransform": "uppercase"
+        }
+      ],
+      "id": "uNavSection",
+      "name": "Nav Section Title",
+      "reusable": true,
+      "x": 1040,
+      "y": 960
+    },
+    {
+      "type": "frame",
+      "width": 256,
+      "height": 56,
+      "padding": [
+        0,
+        "$t:ae-s-5"
+      ],
+      "alignItems": "center",
+      "stroke": {
+        "fill": "$t:ae-rule",
+        "thickness": {
+          "bottom": 1
+        },
+        "align": "inner"
+      },
+      "children": [
+        {
+          "id": "uSidebarHeaderW",
+          "type": "text",
+          "name": "Wordmark",
+          "content": "AnalystEngine",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-h4",
+          "fontWeight": "800",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-fg",
+          "letterSpacing": "-0.03em"
+        }
+      ],
+      "id": "uSidebarHeader",
+      "name": "Sidebar Header",
+      "reusable": true,
+      "x": 1560,
+      "y": 960
+    },
+    {
+      "type": "frame",
+      "width": 256,
+      "height": 900,
+      "fill": "$t:ae-bg",
+      "layout": "vertical",
+      "stroke": {
+        "fill": "$t:ae-rule",
+        "thickness": {
+          "right": 1
+        },
+        "align": "inner"
+      },
+      "children": [
+        {
+          "id": "uSidebarH",
+          "type": "ref",
+          "ref": "uSidebarHeader",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "uSidebarC",
+          "name": "Content",
+          "slot": [
+            "uNavSection",
+            "uNavItem",
+            "uNavItemActive"
+          ],
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": "$t:ae-s-1",
+          "padding": [
+            "$t:ae-s-5",
+            "$t:ae-s-3"
+          ],
+          "children": [
+            {
+              "id": "uSidebarS1",
+              "type": "ref",
+              "ref": "uNavSection",
+              "name": "Section",
+              "width": "fill_container"
+            },
+            {
+              "id": "uSidebarN1",
+              "type": "ref",
+              "ref": "uNavItem",
+              "name": "Nav 1",
+              "width": "fill_container"
+            },
+            {
+              "id": "uSidebarN2",
+              "type": "ref",
+              "ref": "uNavItemActive",
+              "name": "Nav 2",
+              "width": "fill_container"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uSidebarF",
+          "name": "Footer",
+          "slot": [
+            "uNavItem"
+          ],
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": "$t:ae-s-3",
+          "stroke": {
+            "fill": "$t:ae-rule",
+            "thickness": {
+              "top": 1
+            },
+            "align": "inner"
+          },
+          "children": [
+            {
+              "id": "uSidebarFN",
+              "type": "ref",
+              "ref": "uNavItem",
+              "name": "Settings",
+              "width": "fill_container",
+              "descendants": {
+                "uNavItemI": {
+                  "icon": "settings"
+                },
+                "uNavItemL": {
+                  "content": "Settings"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "id": "uSidebar",
+      "name": "Sidebar",
+      "reusable": true,
+      "x": 0,
+      "y": 1200
+    },
+    {
+      "type": "frame",
+      "width": 1184,
+      "height": 56,
+      "fill": "$t:ae-bg",
+      "gap": "$t:ae-s-4",
+      "padding": [
+        0,
+        "$t:ae-s-5"
+      ],
+      "alignItems": "center",
+      "stroke": {
+        "fill": "$t:ae-rule",
+        "thickness": {
+          "bottom": 1
+        },
+        "align": "inner"
+      },
+      "children": [
+        {
+          "id": "uTopBarT",
+          "type": "icon",
+          "name": "Sidebar Trigger",
+          "icon": "panel-left",
+          "library": "lucide",
+          "width": 20,
+          "height": 20,
+          "lineWidth": 1.5,
+          "fill": "$t:ae-fg-muted"
+        },
+        {
+          "type": "frame",
+          "id": "uTopBarSp",
+          "name": "Spacer",
+          "width": "fill_container",
+          "height": 4
+        },
+        {
+          "type": "frame",
+          "id": "uTopBarS",
+          "name": "Search",
+          "width": 240,
+          "fill": "$t:ae-bg-sunken",
+          "cornerRadius": "$t:ae-r-1",
+          "stroke": {
+            "fill": "$t:ae-rule",
+            "thickness": 1,
+            "align": "inner"
+          },
+          "gap": "$t:ae-s-2",
+          "padding": [
+            "$t:ae-s-1",
+            "$t:ae-s-3"
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uTopBarSI",
+              "type": "icon",
+              "name": "Icon",
+              "icon": "search",
+              "library": "lucide",
+              "width": 16,
+              "height": 16,
+              "lineWidth": 1.5,
+              "fill": "$t:ae-fg-dim"
+            },
+            {
+              "id": "uTopBarSP",
+              "type": "text",
+              "name": "Placeholder",
+              "content": "Search or jump to",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-dim",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            },
+            {
+              "id": "uTopBarSK",
+              "type": "text",
+              "name": "Shortcut",
+              "content": "⌘K",
+              "fontFamily": "$t:ae-font-mono",
+              "fontSize": "$t:ae-fs-micro",
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-dim"
+            }
+          ]
+        },
+        {
+          "id": "uTopBarN",
+          "type": "icon",
+          "name": "Notifications",
+          "icon": "bell",
+          "library": "lucide",
+          "width": 20,
+          "height": 20,
+          "lineWidth": 1.5,
+          "fill": "$t:ae-fg-muted"
+        },
+        {
+          "id": "uTopBarA",
+          "type": "ref",
+          "ref": "uAvatar",
+          "name": "Avatar"
+        }
+      ],
+      "id": "uTopBar",
+      "name": "Top Bar",
+      "reusable": true,
+      "x": 520,
+      "y": 1200
+    },
+    {
+      "type": "frame",
+      "gap": "$t:ae-s-3",
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uBreadcrumb1",
+          "type": "text",
+          "name": "Parent",
+          "content": "Delivery",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-eyebrow",
+          "fontWeight": "700",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-eyebrow",
+          "letterSpacing": "$t:ae-tracking-eyebrow",
+          "textTransform": "uppercase"
+        },
+        {
+          "id": "uBreadcrumbI",
+          "type": "icon",
+          "name": "Separator",
+          "icon": "chevron-right",
+          "library": "lucide",
+          "width": 14,
+          "height": 14,
+          "lineWidth": 1.5,
+          "fill": "$t:ae-fg-dim"
+        },
+        {
+          "id": "uBreadcrumb2",
+          "type": "text",
+          "name": "Current",
+          "content": "Client engagements",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-eyebrow",
+          "fontWeight": "700",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-fg-muted",
+          "letterSpacing": "$t:ae-tracking-eyebrow",
+          "textTransform": "uppercase"
+        }
+      ],
+      "id": "uBreadcrumb",
+      "name": "Breadcrumb",
+      "reusable": true,
+      "x": 0,
+      "y": 1440
+    },
+    {
+      "type": "frame",
+      "width": 1120,
+      "layout": "vertical",
+      "gap": "$t:ae-s-3",
+      "children": [
+        {
+          "id": "uPageHeaderB",
+          "type": "ref",
+          "ref": "uBreadcrumb",
+          "name": "Breadcrumb"
+        },
+        {
+          "type": "frame",
+          "id": "uPageHeaderR",
+          "name": "Title row",
+          "width": "fill_container",
+          "justifyContent": "space_between",
+          "alignItems": "end",
+          "children": [
+            {
+              "type": "frame",
+              "id": "uPageHeaderT",
+              "name": "Text",
+              "layout": "vertical",
+              "gap": "$t:ae-s-2",
+              "children": [
+                {
+                  "id": "uPageHeaderH",
+                  "type": "text",
+                  "name": "Title",
+                  "content": "Client engagements",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": "$t:ae-fs-h2",
+                  "fontWeight": "600",
+                  "lineHeight": "$t:ae-lh-heading",
+                  "fill": "$t:ae-fg",
+                  "letterSpacing": "$t:ae-tracking-tight"
+                },
+                {
+                  "id": "uPageHeaderD",
+                  "type": "text",
+                  "name": "Description",
+                  "content": "Live delivery across security and AI advisory clients.",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": "$t:ae-fs-body",
+                  "fontWeight": "normal",
+                  "lineHeight": "$t:ae-lh-body",
+                  "fill": "$t:ae-fg-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uPageHeaderA",
+              "name": "Actions",
+              "slot": [
+                "uBtnPrimary",
+                "uBtnSecondary",
+                "uBtnGhost"
+              ],
+              "gap": "$t:ae-s-3",
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "uPageHeaderP",
+                  "type": "ref",
+                  "ref": "uBtnPrimary",
+                  "name": "Primary action"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "id": "uPageHeader",
+      "name": "Page Header",
+      "reusable": true,
+      "x": 520,
+      "y": 1440
+    },
+    {
+      "type": "frame",
+      "width": 320,
+      "layout": "vertical",
+      "gap": "$t:ae-s-3",
+      "children": [
+        {
+          "id": "uKpiH",
+          "type": "text",
+          "name": "Heading",
+          "content": "Active engagements",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-eyebrow",
+          "fontWeight": "700",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-eyebrow",
+          "letterSpacing": "$t:ae-tracking-eyebrow",
+          "textTransform": "uppercase"
+        },
+        {
+          "type": "frame",
+          "id": "uKpiB",
+          "name": "Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": "$t:ae-s-2",
+          "padding": "$t:ae-s-5",
+          "fill": "$t:ae-bg-elev",
+          "cornerRadius": "$t:ae-r-2",
+          "stroke": {
+            "fill": "$t:ae-rule",
+            "thickness": 1,
+            "align": "inner"
+          },
+          "effect": [
+            {
+              "type": "shadow",
+              "shadowType": "inner",
+              "color": "$t:ae-shadow-1-inner-color",
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "blur": 0
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "$t:ae-shadow-1-outer-color",
+              "offset": {
+                "x": 0,
+                "y": 2
+              },
+              "blur": 8
+            }
+          ],
+          "children": [
+            {
+              "id": "uKpiV",
+              "type": "text",
+              "name": "Value",
+              "content": "14",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-h2",
+              "fontWeight": "600",
+              "lineHeight": "$t:ae-lh-heading",
+              "fill": "$t:ae-fg",
+              "letterSpacing": "$t:ae-tracking-tight"
+            },
+            {
+              "id": "uKpiD",
+              "type": "text",
+              "name": "Detail",
+              "content": "2 more than September",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-dim"
+            }
+          ]
+        }
+      ],
+      "id": "uKpi",
+      "name": "KPI Card",
+      "reusable": true,
+      "x": 0,
+      "y": 1680
+    },
+    {
+      "type": "frame",
+      "width": 360,
+      "layout": "vertical",
+      "gap": "$t:ae-s-3",
+      "children": [
+        {
+          "id": "uCardH",
+          "type": "text",
+          "name": "Heading",
+          "content": "Card heading",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-eyebrow",
+          "fontWeight": "700",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-eyebrow",
+          "letterSpacing": "$t:ae-tracking-eyebrow",
+          "textTransform": "uppercase"
+        },
+        {
+          "type": "frame",
+          "id": "uCardB",
+          "name": "Body",
+          "slot": [],
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": "$t:ae-s-2",
+          "padding": "$t:ae-s-5",
+          "fill": "$t:ae-bg-elev",
+          "cornerRadius": "$t:ae-r-2",
+          "stroke": {
+            "fill": "$t:ae-rule",
+            "thickness": 1,
+            "align": "inner"
+          },
+          "effect": [
+            {
+              "type": "shadow",
+              "shadowType": "inner",
+              "color": "$t:ae-shadow-1-inner-color",
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "blur": 0
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "$t:ae-shadow-1-outer-color",
+              "offset": {
+                "x": 0,
+                "y": 2
+              },
+              "blur": 8
+            }
+          ],
+          "children": [
+            {
+              "id": "uCardT",
+              "type": "text",
+              "name": "Title",
+              "content": "Card title",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-h4",
+              "fontWeight": "600",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg"
+            },
+            {
+              "id": "uCardX",
+              "type": "text",
+              "name": "Text",
+              "content": "One short paragraph of supporting text.",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            }
+          ]
+        }
+      ],
+      "id": "uCard",
+      "name": "Card",
+      "reusable": true,
+      "x": 520,
+      "y": 1680
+    },
+    {
+      "type": "frame",
+      "width": 1120,
+      "gap": "$t:ae-s-4",
+      "padding": [
+        "$t:ae-s-3",
+        "$t:ae-s-5"
+      ],
+      "alignItems": "center",
+      "stroke": {
+        "fill": "$t:ae-rule",
+        "thickness": {
+          "bottom": 1
+        },
+        "align": "inner"
+      },
+      "children": [
+        {
+          "type": "frame",
+          "id": "uThClient",
+          "name": "Cell Client",
+          "width": "fill_container",
+          "children": [
+            {
+              "id": "uThClientL",
+              "type": "text",
+              "name": "Label",
+              "content": "Client",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-micro",
+              "fontWeight": "700",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-eyebrow",
+              "letterSpacing": "$t:ae-tracking-eyebrow",
+              "textTransform": "uppercase"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uThType",
+          "name": "Cell Type",
+          "width": "fill_container",
+          "children": [
+            {
+              "id": "uThTypeL",
+              "type": "text",
+              "name": "Label",
+              "content": "Type",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-micro",
+              "fontWeight": "700",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-eyebrow",
+              "letterSpacing": "$t:ae-tracking-eyebrow",
+              "textTransform": "uppercase"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uThStatus",
+          "name": "Cell Status",
+          "width": 160,
+          "children": [
+            {
+              "id": "uThStatusL",
+              "type": "text",
+              "name": "Label",
+              "content": "Status",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-micro",
+              "fontWeight": "700",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-eyebrow",
+              "letterSpacing": "$t:ae-tracking-eyebrow",
+              "textTransform": "uppercase"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uThOwner",
+          "name": "Cell Owner",
+          "width": 160,
+          "children": [
+            {
+              "id": "uThOwnerL",
+              "type": "text",
+              "name": "Label",
+              "content": "Owner",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-micro",
+              "fontWeight": "700",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-eyebrow",
+              "letterSpacing": "$t:ae-tracking-eyebrow",
+              "textTransform": "uppercase"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uThDue",
+          "name": "Cell Due",
+          "width": 128,
+          "children": [
+            {
+              "id": "uThDueL",
+              "type": "text",
+              "name": "Label",
+              "content": "Due",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-micro",
+              "fontWeight": "700",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-eyebrow",
+              "letterSpacing": "$t:ae-tracking-eyebrow",
+              "textTransform": "uppercase"
+            }
+          ]
+        }
+      ],
+      "id": "uTableHead",
+      "name": "Table/Header Row",
+      "reusable": true,
+      "x": 0,
+      "y": 1920
+    },
+    {
+      "type": "frame",
+      "width": 1120,
+      "gap": "$t:ae-s-4",
+      "padding": [
+        "$t:ae-s-3",
+        "$t:ae-s-5"
+      ],
+      "alignItems": "center",
+      "stroke": {
+        "fill": "$t:ae-rule",
+        "thickness": {
+          "bottom": 1
+        },
+        "align": "inner"
+      },
+      "children": [
+        {
+          "type": "frame",
+          "id": "uTrClient",
+          "name": "Cell Client",
+          "width": "fill_container",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uTrClientL",
+              "type": "text",
+              "name": "Value",
+              "content": "Client name",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "500",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uTrType",
+          "name": "Cell Type",
+          "width": "fill_container",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uTrTypeL",
+              "type": "text",
+              "name": "Value",
+              "content": "Engagement type",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-muted"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uTrStatus",
+          "name": "Cell Status",
+          "width": 160,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uTrChip",
+              "type": "ref",
+              "ref": "uChipNeutral",
+              "name": "Status"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uTrOwner",
+          "name": "Cell Owner",
+          "width": 160,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uTrOwnerL",
+              "type": "text",
+              "name": "Value",
+              "content": "Owner name",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-muted"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uTrDue",
+          "name": "Cell Due",
+          "width": 128,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uTrDueL",
+              "type": "text",
+              "name": "Value",
+              "content": "1 Jan 2027",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-muted"
+            }
+          ]
+        }
+      ],
+      "id": "uTableRow",
+      "name": "Table/Row",
+      "reusable": true,
+      "x": 0,
+      "y": 2160
+    },
+    {
+      "type": "frame",
+      "width": 1120,
+      "layout": "vertical",
+      "fill": "$t:ae-bg-elev",
+      "cornerRadius": "$t:ae-r-2",
+      "stroke": {
+        "fill": "$t:ae-rule",
+        "thickness": 1,
+        "align": "inner"
+      },
+      "clip": true,
+      "slot": [
+        "uTableHead",
+        "uTableRow"
+      ],
+      "children": [
+        {
+          "id": "uTableH",
+          "type": "ref",
+          "ref": "uTableHead",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "id": "uTableR1",
+          "type": "ref",
+          "ref": "uTableRow",
+          "name": "Row 1",
+          "width": "fill_container"
+        }
+      ],
+      "id": "uTable",
+      "name": "Table",
+      "reusable": true,
+      "x": 0,
+      "y": 2400
+    },
+    {
+      "type": "frame",
+      "width": 1120,
+      "gap": "$t:ae-s-2",
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "uPagS",
+          "type": "text",
+          "name": "Summary",
+          "content": "Showing 1 to 5 of 14",
+          "fontFamily": "$t:ae-font-body",
+          "fontSize": "$t:ae-fs-small",
+          "fontWeight": "normal",
+          "lineHeight": "$t:ae-lh-body",
+          "fill": "$t:ae-fg-dim"
+        },
+        {
+          "type": "frame",
+          "id": "uPagSp",
+          "name": "Spacer",
+          "width": "fill_container",
+          "height": 4
+        },
+        {
+          "id": "uPagPrev",
+          "type": "ref",
+          "ref": "uBtnIcon",
+          "name": "Previous",
+          "descendants": {
+            "uBtnIconI": {
+              "icon": "chevron-left"
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "uPag1",
+          "name": "Page 1",
+          "width": 32,
+          "height": 32,
+          "cornerRadius": "$t:ae-r-1",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uPag1L",
+              "type": "text",
+              "name": "Label",
+              "content": "1",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "600",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg"
+            }
+          ],
+          "fill": "$t:ae-bg-elev",
+          "stroke": {
+            "fill": "$t:ae-rule-strong",
+            "thickness": 1,
+            "align": "inner"
+          }
+        },
+        {
+          "type": "frame",
+          "id": "uPag2",
+          "name": "Page 2",
+          "width": 32,
+          "height": 32,
+          "cornerRadius": "$t:ae-r-1",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uPag2L",
+              "type": "text",
+              "name": "Label",
+              "content": "2",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-muted"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uPag3",
+          "name": "Page 3",
+          "width": 32,
+          "height": 32,
+          "cornerRadius": "$t:ae-r-1",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uPag3L",
+              "type": "text",
+              "name": "Label",
+              "content": "3",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$t:ae-fs-small",
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-muted"
+            }
+          ]
+        },
+        {
+          "id": "uPagNext",
+          "type": "ref",
+          "ref": "uBtnIcon",
+          "name": "Next",
+          "descendants": {
+            "uBtnIconI": {
+              "icon": "chevron-right"
+            }
+          }
+        }
+      ],
+      "id": "uPagination",
+      "name": "Pagination",
+      "reusable": true,
+      "x": 0,
+      "y": 2640
+    }
+  ]
+}

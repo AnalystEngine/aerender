@@ -1,0 +1,1429 @@
+{
+  "aerender": 1,
+  "imports": {
+    "t": "tokens.lib.json"
+  },
+  "variables": {},
+  "children": [
+    {
+      "id": "aSocial",
+      "type": "frame",
+      "name": "Social card",
+      "reusable": true,
+      "x": 0,
+      "y": 0,
+      "width": 1200,
+      "height": 630,
+      "clip": true,
+      "fill": "$t:ae-bg",
+      "layout": "horizontal",
+      "children": [
+        {
+          "id": "aSocialText",
+          "type": "frame",
+          "name": "Text",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "padding": 64,
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "id": "aSocialW",
+              "type": "text",
+              "name": "Wordmark",
+              "content": "AnalystEngine",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 26,
+              "fontWeight": "800",
+              "lineHeight": 1,
+              "fill": "$t:ae-fg",
+              "letterSpacing": "-0.03em"
+            },
+            {
+              "id": "aSocialBlock",
+              "type": "frame",
+              "name": "Message",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "id": "aSocialEb",
+                  "type": "frame",
+                  "name": "Marker row",
+                  "gap": 14,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "aSocialEbM",
+                      "type": "frame",
+                      "name": "Live marker",
+                      "width": 10,
+                      "height": 10,
+                      "fill": "$t:ae-accent"
+                    },
+                    {
+                      "id": "aSocialEbE",
+                      "type": "text",
+                      "name": "Eyebrow",
+                      "content": "Research note",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 16,
+                      "fontWeight": "700",
+                      "lineHeight": 1.2,
+                      "fill": "$t:ae-eyebrow",
+                      "textTransform": "uppercase",
+                      "letterSpacing": "$t:ae-tracking-eyebrow"
+                    }
+                  ]
+                },
+                {
+                  "id": "aSocialH",
+                  "type": "text",
+                  "name": "Headline",
+                  "content": "Review AI tools before staff adopt them",
+                  "fontFamily": "$t:ae-font-display",
+                  "fontSize": 58,
+                  "fontWeight": "600",
+                  "lineHeight": "$t:ae-lh-heading",
+                  "fill": "$t:ae-fg",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "letterSpacing": "$t:ae-tracking-tight"
+                },
+                {
+                  "id": "aSocialSub",
+                  "type": "text",
+                  "name": "Subtitle",
+                  "content": "What a six-week review of one building society found.",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 24,
+                  "fontWeight": "normal",
+                  "lineHeight": 1.35,
+                  "fill": "$t:ae-fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "aSocialImg",
+          "type": "frame",
+          "name": "Photo",
+          "width": 400,
+          "height": "fill_container",
+          "imageFilter": "mono",
+          "fill": {
+            "type": "image",
+            "url": "./assets/data-centre-roof.jpg",
+            "mode": "fill"
+          }
+        }
+      ]
+    },
+    {
+      "id": "aSquare",
+      "type": "frame",
+      "name": "LinkedIn square",
+      "reusable": true,
+      "x": 1300,
+      "y": 0,
+      "width": 1080,
+      "height": 1080,
+      "clip": true,
+      "fill": "$t:ae-bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "aSquareImg",
+          "type": "frame",
+          "name": "Photo",
+          "width": "fill_container",
+          "height": 400,
+          "imageFilter": "mono",
+          "fill": {
+            "type": "image",
+            "url": "./assets/data-centre-roof.jpg",
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "aSquareText",
+          "type": "frame",
+          "name": "Text",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            64,
+            80,
+            72,
+            80
+          ],
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "id": "aSquareBlock",
+              "type": "frame",
+              "name": "Message",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 28,
+              "children": [
+                {
+                  "id": "aSquareEb",
+                  "type": "frame",
+                  "name": "Marker row",
+                  "gap": 14,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "aSquareEbM",
+                      "type": "frame",
+                      "name": "Live marker",
+                      "width": 10,
+                      "height": 10,
+                      "fill": "$t:ae-accent"
+                    },
+                    {
+                      "id": "aSquareEbE",
+                      "type": "text",
+                      "name": "Eyebrow",
+                      "content": "Briefing",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 18,
+                      "fontWeight": "700",
+                      "lineHeight": 1.2,
+                      "fill": "$t:ae-eyebrow",
+                      "textTransform": "uppercase",
+                      "letterSpacing": "$t:ae-tracking-eyebrow"
+                    }
+                  ]
+                },
+                {
+                  "id": "aSquareH",
+                  "type": "text",
+                  "name": "Headline",
+                  "content": "Most AI use bypasses the controls you already run",
+                  "fontFamily": "$t:ae-font-display",
+                  "fontSize": 64,
+                  "fontWeight": "600",
+                  "lineHeight": "$t:ae-lh-heading",
+                  "fill": "$t:ae-fg",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "letterSpacing": "$t:ae-tracking-tight"
+                }
+              ]
+            },
+            {
+              "id": "aSquareFoot",
+              "type": "frame",
+              "name": "Footer",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "aSquareW",
+                  "type": "text",
+                  "name": "Wordmark",
+                  "content": "AnalystEngine",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 28,
+                  "fontWeight": "800",
+                  "lineHeight": 1,
+                  "fill": "$t:ae-fg",
+                  "letterSpacing": "-0.03em"
+                },
+                {
+                  "id": "aSquareMeta",
+                  "type": "text",
+                  "name": "Meta",
+                  "content": "October 2026",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 16,
+                  "fontWeight": "700",
+                  "lineHeight": 1.2,
+                  "fill": "$t:ae-eyebrow",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "$t:ae-tracking-eyebrow"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aCover",
+      "type": "frame",
+      "name": "A4 report cover",
+      "reusable": true,
+      "x": 0,
+      "y": 1200,
+      "width": 794,
+      "height": 1123,
+      "clip": true,
+      "fill": "$t:ae-bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "aCoverImg",
+          "type": "frame",
+          "name": "Photo",
+          "width": "fill_container",
+          "height": 560,
+          "imageFilter": "mono",
+          "fill": {
+            "type": "image",
+            "url": "./assets/data-centre-roof.jpg",
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "aCoverText",
+          "type": "frame",
+          "name": "Text",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            56,
+            64,
+            56,
+            64
+          ],
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "id": "aCoverBlock",
+              "type": "frame",
+              "name": "Title block",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 22,
+              "children": [
+                {
+                  "id": "aCoverEb",
+                  "type": "text",
+                  "name": "Eyebrow",
+                  "content": "Client report",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "lineHeight": 1.2,
+                  "fill": "$t:ae-eyebrow",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "$t:ae-tracking-eyebrow"
+                },
+                {
+                  "id": "aCoverH",
+                  "type": "text",
+                  "name": "Headline",
+                  "content": "AI security readiness",
+                  "fontFamily": "$t:ae-font-display",
+                  "fontSize": 54,
+                  "fontWeight": "600",
+                  "lineHeight": "$t:ae-lh-display",
+                  "fill": "$t:ae-fg",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "letterSpacing": "$t:ae-tracking-display"
+                },
+                {
+                  "id": "aCoverSub",
+                  "type": "text",
+                  "name": "Subtitle",
+                  "content": "Findings and recommendations for the board of a regional building society",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 19,
+                  "fontWeight": "normal",
+                  "lineHeight": 1.4,
+                  "fill": "$t:ae-fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container"
+                }
+              ]
+            },
+            {
+              "id": "aCoverFoot",
+              "type": "frame",
+              "name": "Footer",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "id": "aCoverMeta",
+                  "type": "frame",
+                  "name": "Meta",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "id": "aCoverDate",
+                      "type": "text",
+                      "name": "Date",
+                      "content": "17 October 2026",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 12,
+                      "fontWeight": "700",
+                      "lineHeight": 1.2,
+                      "fill": "$t:ae-eyebrow",
+                      "textTransform": "uppercase",
+                      "letterSpacing": "$t:ae-tracking-eyebrow"
+                    },
+                    {
+                      "id": "aCoverConf",
+                      "type": "text",
+                      "name": "Classification",
+                      "content": "Confidential",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 12,
+                      "fontWeight": "700",
+                      "lineHeight": 1.2,
+                      "fill": "$t:ae-accent",
+                      "textTransform": "uppercase",
+                      "letterSpacing": "$t:ae-tracking-eyebrow"
+                    }
+                  ]
+                },
+                {
+                  "id": "aCoverW",
+                  "type": "text",
+                  "name": "Wordmark",
+                  "content": "AnalystEngine",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 22,
+                  "fontWeight": "800",
+                  "lineHeight": 1,
+                  "fill": "$t:ae-fg",
+                  "letterSpacing": "-0.03em"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aOnePager",
+      "type": "frame",
+      "name": "A4 one-pager",
+      "reusable": true,
+      "x": 900,
+      "y": 1200,
+      "width": 794,
+      "height": 1123,
+      "clip": true,
+      "fill": "$t:ae-bg",
+      "layout": "vertical",
+      "padding": [
+        52,
+        56
+      ],
+      "gap": 36,
+      "children": [
+        {
+          "id": "aOpHead",
+          "type": "frame",
+          "name": "Header",
+          "width": "fill_container",
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "aOpW",
+              "type": "text",
+              "name": "Wordmark",
+              "content": "AnalystEngine",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 18,
+              "fontWeight": "800",
+              "lineHeight": 1,
+              "fill": "$t:ae-fg",
+              "letterSpacing": "-0.03em"
+            },
+            {
+              "id": "aOpConf",
+              "type": "text",
+              "name": "Classification",
+              "content": "Confidential",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "lineHeight": 1.2,
+              "fill": "$t:ae-eyebrow",
+              "textTransform": "uppercase",
+              "letterSpacing": "$t:ae-tracking-eyebrow"
+            }
+          ]
+        },
+        {
+          "id": "aOpTitle",
+          "type": "frame",
+          "name": "Title block",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "id": "aOpEb",
+              "type": "text",
+              "name": "Eyebrow",
+              "content": "AI security readiness · Summary",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "lineHeight": 1.2,
+              "fill": "$t:ae-eyebrow",
+              "textTransform": "uppercase",
+              "letterSpacing": "$t:ae-tracking-eyebrow"
+            },
+            {
+              "id": "aOpH",
+              "type": "text",
+              "name": "Headline",
+              "content": "AI use has outgrown the controls around it",
+              "fontFamily": "$t:ae-font-display",
+              "fontSize": 34,
+              "fontWeight": "600",
+              "lineHeight": "$t:ae-lh-heading",
+              "fill": "$t:ae-fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "letterSpacing": "$t:ae-tracking-tight"
+            },
+            {
+              "id": "aOpLede",
+              "type": "text",
+              "name": "Lede",
+              "content": "A six-week review of AI tools, data flows and controls across retail and mortgage operations.",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 16,
+              "fontWeight": "normal",
+              "lineHeight": 1.45,
+              "fill": "$t:ae-fg-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            }
+          ]
+        },
+        {
+          "id": "aOpKey",
+          "type": "frame",
+          "name": "Key finding",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            18,
+            22
+          ],
+          "fill": "$t:ae-bg-elev",
+          "cornerRadius": "$t:ae-r-2",
+          "stroke": {
+            "fill": "$t:ae-rule",
+            "thickness": 1,
+            "align": "inner"
+          },
+          "children": [
+            {
+              "id": "aOpKeyEb",
+              "type": "text",
+              "name": "Eyebrow",
+              "content": "Key finding",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "lineHeight": 1.2,
+              "fill": "$t:ae-eyebrow",
+              "textTransform": "uppercase",
+              "letterSpacing": "$t:ae-tracking-eyebrow"
+            },
+            {
+              "id": "aOpKeyT",
+              "type": "text",
+              "name": "Finding",
+              "content": "Eleven of fourteen AI tools in use were never reviewed, and 38% of sampled prompts held member data.",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "lineHeight": 1.45,
+              "fill": "$t:ae-fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            }
+          ]
+        },
+        {
+          "id": "aOpCols",
+          "type": "frame",
+          "name": "Columns",
+          "width": "fill_container",
+          "gap": 36,
+          "children": [
+            {
+              "id": "aOpFound",
+              "type": "frame",
+              "name": "What We Found",
+              "width": 380,
+              "layout": "vertical",
+              "gap": 14,
+              "children": [
+                {
+                  "id": "aOpFoundEb",
+                  "type": "text",
+                  "name": "Eyebrow",
+                  "content": "What we found",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "lineHeight": 1.2,
+                  "fill": "$t:ae-eyebrow",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "$t:ae-tracking-eyebrow"
+                },
+                {
+                  "id": "aOpF1",
+                  "type": "text",
+                  "name": "Paragraph",
+                  "content": "Staff in four of six departments use generative AI every week, mostly through browser extensions and features switched on in existing software.",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 14.5,
+                  "fontWeight": "normal",
+                  "lineHeight": 1.6,
+                  "fill": "$t:ae-fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container"
+                },
+                {
+                  "id": "aOpF2",
+                  "type": "text",
+                  "name": "Paragraph",
+                  "content": "The acceptable use policy predates these tools. Data loss rules do not inspect prompts, so member data leaves without a record.",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 14.5,
+                  "fontWeight": "normal",
+                  "lineHeight": 1.6,
+                  "fill": "$t:ae-fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container"
+                },
+                {
+                  "id": "aOpF3",
+                  "type": "text",
+                  "name": "Paragraph",
+                  "content": "No executive owns AI risk. Decisions fall between IT, data protection and risk, so none of them is made.",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 14.5,
+                  "fontWeight": "normal",
+                  "lineHeight": 1.6,
+                  "fill": "$t:ae-fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container"
+                }
+              ]
+            },
+            {
+              "id": "aOpRec",
+              "type": "frame",
+              "name": "What We Recommend",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "children": [
+                {
+                  "id": "aOpRecEb",
+                  "type": "text",
+                  "name": "Eyebrow",
+                  "content": "What we recommend",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "lineHeight": 1.2,
+                  "fill": "$t:ae-eyebrow",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "$t:ae-tracking-eyebrow"
+                },
+                {
+                  "id": "aOpR1",
+                  "type": "frame",
+                  "name": "Action 1",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "id": "aOpR1N",
+                      "type": "text",
+                      "name": "Number",
+                      "content": "01",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14.5,
+                      "fontWeight": "600",
+                      "lineHeight": 1.6,
+                      "fill": "$t:ae-fg-dim",
+                      "textGrowth": "fixed-width",
+                      "width": 26
+                    },
+                    {
+                      "id": "aOpR1T",
+                      "type": "text",
+                      "name": "Text",
+                      "content": "Name an executive owner for AI risk.",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14.5,
+                      "fontWeight": "500",
+                      "lineHeight": 1.6,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    }
+                  ]
+                },
+                {
+                  "id": "aOpR2",
+                  "type": "frame",
+                  "name": "Action 2",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "id": "aOpR2N",
+                      "type": "text",
+                      "name": "Number",
+                      "content": "02",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14.5,
+                      "fontWeight": "600",
+                      "lineHeight": 1.6,
+                      "fill": "$t:ae-fg-dim",
+                      "textGrowth": "fixed-width",
+                      "width": 26
+                    },
+                    {
+                      "id": "aOpR2T",
+                      "type": "text",
+                      "name": "Text",
+                      "content": "Route every AI tool through one review.",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14.5,
+                      "fontWeight": "500",
+                      "lineHeight": 1.6,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    }
+                  ]
+                },
+                {
+                  "id": "aOpR3",
+                  "type": "frame",
+                  "name": "Action 3",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "id": "aOpR3N",
+                      "type": "text",
+                      "name": "Number",
+                      "content": "03",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14.5,
+                      "fontWeight": "600",
+                      "lineHeight": 1.6,
+                      "fill": "$t:ae-fg-dim",
+                      "textGrowth": "fixed-width",
+                      "width": 26
+                    },
+                    {
+                      "id": "aOpR3T",
+                      "type": "text",
+                      "name": "Text",
+                      "content": "Inspect prompts with data loss rules.",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14.5,
+                      "fontWeight": "500",
+                      "lineHeight": 1.6,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    }
+                  ]
+                },
+                {
+                  "id": "aOpR4",
+                  "type": "frame",
+                  "name": "Action 4",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "id": "aOpR4N",
+                      "type": "text",
+                      "name": "Number",
+                      "content": "04",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14.5,
+                      "fontWeight": "600",
+                      "lineHeight": 1.6,
+                      "fill": "$t:ae-fg-dim",
+                      "textGrowth": "fixed-width",
+                      "width": 26
+                    },
+                    {
+                      "id": "aOpR4T",
+                      "type": "text",
+                      "name": "Text",
+                      "content": "Re-assess against ISO/IEC 42001 in March.",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14.5,
+                      "fontWeight": "500",
+                      "lineHeight": 1.6,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "aOpEv",
+          "type": "frame",
+          "name": "Evidence",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "id": "aOpEvEb",
+              "type": "text",
+              "name": "Eyebrow",
+              "content": "Where the organisation stands",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "lineHeight": 1.2,
+              "fill": "$t:ae-eyebrow",
+              "textTransform": "uppercase",
+              "letterSpacing": "$t:ae-tracking-eyebrow"
+            },
+            {
+              "id": "aOpEvT",
+              "type": "frame",
+              "name": "Table",
+              "width": "fill_container",
+              "layout": "vertical",
+              "children": [
+                {
+                  "id": "aOpEv0",
+                  "type": "frame",
+                  "name": "Header row",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "padding": [
+                    13,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "aOpEv0c0",
+                      "type": "text",
+                      "name": "Eyebrow",
+                      "content": "Area",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 10.5,
+                      "fontWeight": "700",
+                      "lineHeight": 1.2,
+                      "fill": "$t:ae-eyebrow",
+                      "textTransform": "uppercase",
+                      "letterSpacing": "$t:ae-tracking-eyebrow",
+                      "textGrowth": "fixed-width",
+                      "width": 150
+                    },
+                    {
+                      "id": "aOpEv0c1",
+                      "type": "text",
+                      "name": "Eyebrow",
+                      "content": "Today",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 10.5,
+                      "fontWeight": "700",
+                      "lineHeight": 1.2,
+                      "fill": "$t:ae-eyebrow",
+                      "textTransform": "uppercase",
+                      "letterSpacing": "$t:ae-tracking-eyebrow",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    },
+                    {
+                      "id": "aOpEv0c2",
+                      "type": "text",
+                      "name": "Eyebrow",
+                      "content": "Expected",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 10.5,
+                      "fontWeight": "700",
+                      "lineHeight": 1.2,
+                      "fill": "$t:ae-eyebrow",
+                      "textTransform": "uppercase",
+                      "letterSpacing": "$t:ae-tracking-eyebrow",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    },
+                    {
+                      "id": "aOpEv0c3",
+                      "type": "text",
+                      "name": "Eyebrow",
+                      "content": "Gap",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 10.5,
+                      "fontWeight": "700",
+                      "lineHeight": 1.2,
+                      "fill": "$t:ae-eyebrow",
+                      "textTransform": "uppercase",
+                      "letterSpacing": "$t:ae-tracking-eyebrow",
+                      "textGrowth": "fixed-width",
+                      "width": 70
+                    }
+                  ]
+                },
+                {
+                  "id": "aOpEv1",
+                  "type": "frame",
+                  "name": "Row",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "padding": [
+                    13,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "aOpEv1c0",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Tool approval",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": 150
+                    },
+                    {
+                      "id": "aOpEv1c1",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Teams adopt tools directly",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    },
+                    {
+                      "id": "aOpEv1c2",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Central review before use",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    },
+                    {
+                      "id": "aOpEv1c3",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "High",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": 70
+                    }
+                  ],
+                  "stroke": {
+                    "fill": "$t:ae-rule",
+                    "thickness": {
+                      "top": 1
+                    },
+                    "align": "inner"
+                  }
+                },
+                {
+                  "id": "aOpEv2",
+                  "type": "frame",
+                  "name": "Row",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "padding": [
+                    13,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "aOpEv2c0",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Data protection",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": 150
+                    },
+                    {
+                      "id": "aOpEv2c1",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Prompts are not inspected",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    },
+                    {
+                      "id": "aOpEv2c2",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Member data blocked or logged",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    },
+                    {
+                      "id": "aOpEv2c3",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "High",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": 70
+                    }
+                  ],
+                  "stroke": {
+                    "fill": "$t:ae-rule",
+                    "thickness": {
+                      "top": 1
+                    },
+                    "align": "inner"
+                  }
+                },
+                {
+                  "id": "aOpEv3",
+                  "type": "frame",
+                  "name": "Row",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "padding": [
+                    13,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "aOpEv3c0",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Ownership",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": 150
+                    },
+                    {
+                      "id": "aOpEv3c1",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Split across three functions",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    },
+                    {
+                      "id": "aOpEv3c2",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Named executive owner",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    },
+                    {
+                      "id": "aOpEv3c3",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Medium",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": 70
+                    }
+                  ],
+                  "stroke": {
+                    "fill": "$t:ae-rule",
+                    "thickness": {
+                      "top": 1
+                    },
+                    "align": "inner"
+                  }
+                },
+                {
+                  "id": "aOpEv4",
+                  "type": "frame",
+                  "name": "Row",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "padding": [
+                    13,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "aOpEv4c0",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Suppliers",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": 150
+                    },
+                    {
+                      "id": "aOpEv4c1",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Generic IT questionnaire",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    },
+                    {
+                      "id": "aOpEv4c2",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "AI-specific due diligence",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container"
+                    },
+                    {
+                      "id": "aOpEv4c3",
+                      "type": "text",
+                      "name": "Cell",
+                      "content": "Medium",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 1.4,
+                      "fill": "$t:ae-fg",
+                      "textGrowth": "fixed-width",
+                      "width": 70
+                    }
+                  ],
+                  "stroke": {
+                    "fill": "$t:ae-rule",
+                    "thickness": {
+                      "top": 1,
+                      "bottom": 1
+                    },
+                    "align": "inner"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "aOpSpacer",
+          "type": "frame",
+          "name": "Spacer",
+          "width": 1,
+          "height": "fill_container"
+        },
+        {
+          "id": "aOpBand",
+          "type": "frame",
+          "name": "Programme band",
+          "width": "fill_container",
+          "gap": 28,
+          "alignItems": "center",
+          "padding": [
+            16,
+            0,
+            0,
+            0
+          ],
+          "stroke": {
+            "fill": "$t:ae-rule-strong",
+            "thickness": {
+              "top": 1
+            },
+            "align": "inner"
+          },
+          "children": [
+            {
+              "id": "aOpBandEb",
+              "type": "text",
+              "name": "Eyebrow",
+              "content": "Programme",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "lineHeight": 1.2,
+              "fill": "$t:ae-eyebrow",
+              "textTransform": "uppercase",
+              "letterSpacing": "$t:ae-tracking-eyebrow"
+            },
+            {
+              "id": "aOpBand1",
+              "type": "text",
+              "name": "Duration",
+              "content": "12 weeks",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 13.5,
+              "fontWeight": "600",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg"
+            },
+            {
+              "id": "aOpBand2",
+              "type": "text",
+              "name": "Fees",
+              "content": "Set at scoping in November",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 13.5,
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-muted"
+            },
+            {
+              "id": "aOpBand3",
+              "type": "text",
+              "name": "Exclusions",
+              "content": "No model development",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 13.5,
+              "fontWeight": "normal",
+              "lineHeight": "$t:ae-lh-body",
+              "fill": "$t:ae-fg-muted"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aHero",
+      "type": "frame",
+      "name": "Web hero",
+      "reusable": true,
+      "x": 0,
+      "y": 2420,
+      "width": 1440,
+      "height": 720,
+      "clip": true,
+      "fill": "$t:ae-bg",
+      "layout": "horizontal",
+      "children": [
+        {
+          "id": "aHeroText",
+          "type": "frame",
+          "name": "Text",
+          "width": 864,
+          "height": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            0,
+            72,
+            0,
+            120
+          ],
+          "justifyContent": "center",
+          "gap": 32,
+          "children": [
+            {
+              "id": "aHeroEb",
+              "type": "text",
+              "name": "Eyebrow",
+              "content": "Practitioner-led AI advisory",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 16,
+              "fontWeight": "700",
+              "lineHeight": 1.2,
+              "fill": "$t:ae-eyebrow",
+              "textTransform": "uppercase",
+              "letterSpacing": "$t:ae-tracking-eyebrow"
+            },
+            {
+              "id": "aHeroH",
+              "type": "text",
+              "name": "Headline",
+              "content": "Secure AI adoption, built by engineers",
+              "fontFamily": "$t:ae-font-display",
+              "fontSize": 72,
+              "fontWeight": "600",
+              "lineHeight": "$t:ae-lh-display",
+              "fill": "$t:ae-fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "letterSpacing": "$t:ae-tracking-display"
+            },
+            {
+              "id": "aHeroSub",
+              "type": "text",
+              "name": "Subtitle",
+              "content": "Assessments, red teaming and governance for organisations that already run AI in production.",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 22,
+              "fontWeight": "normal",
+              "lineHeight": 1.45,
+              "fill": "$t:ae-fg-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            },
+            {
+              "id": "aHeroCtas",
+              "type": "frame",
+              "name": "Actions",
+              "gap": 16,
+              "padding": [
+                8,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "id": "aHeroP",
+                  "type": "frame",
+                  "name": "Primary button",
+                  "padding": [
+                    14,
+                    24
+                  ],
+                  "cornerRadius": "$t:ae-r-1",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "aHeroPL",
+                      "type": "text",
+                      "name": "Label",
+                      "content": "Book a briefing",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 18,
+                      "fontWeight": "600",
+                      "lineHeight": "$t:ae-lh-body",
+                      "fill": "$t:ae-bg"
+                    }
+                  ],
+                  "fill": "$t:ae-accent"
+                },
+                {
+                  "id": "aHeroS",
+                  "type": "frame",
+                  "name": "Secondary button",
+                  "padding": [
+                    14,
+                    24
+                  ],
+                  "cornerRadius": "$t:ae-r-1",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "aHeroSL",
+                      "type": "text",
+                      "name": "Label",
+                      "content": "Read the research",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": 18,
+                      "fontWeight": "500",
+                      "lineHeight": "$t:ae-lh-body",
+                      "fill": "$t:ae-fg"
+                    }
+                  ],
+                  "stroke": {
+                    "fill": "$t:ae-rule-strong",
+                    "thickness": 1,
+                    "align": "inner"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "aHeroImg",
+          "type": "frame",
+          "name": "Photo",
+          "width": "fill_container",
+          "height": "fill_container",
+          "imageFilter": "mono",
+          "fill": {
+            "type": "image",
+            "url": "./assets/data-centre-roof.jpg",
+            "mode": "fill"
+          }
+        }
+      ]
+    }
+  ]
+}

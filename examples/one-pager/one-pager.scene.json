@@ -1,0 +1,32 @@
+{
+  "aerender": 1,
+  "imports": {
+    "a": "aerender:analystengine/assets"
+  },
+  "children": [
+    {
+      "id": "cover",
+      "type": "ref",
+      "ref": "a:aCover",
+      "name": "Report cover",
+      "x": 0,
+      "y": 0,
+      "descendants": {
+        "a:aCoverH": {
+          "content": "AI security readiness"
+        },
+        "a:aCoverSub": {
+          "content": "Findings and recommendations for the board of Northbridge Building Society"
+        }
+      }
+    },
+    {
+      "id": "summary",
+      "type": "ref",
+      "ref": "a:aOnePager",
+      "name": "One-pager",
+      "x": 900,
+      "y": 0
+    }
+  ]
+}

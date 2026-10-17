@@ -1,0 +1,233 @@
+{
+  "aerender": 1,
+  "children": [
+    {
+      "id": "root",
+      "type": "frame",
+      "name": "Image modes",
+      "fill": "#181818",
+      "padding": 48,
+      "gap": 24,
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "r1",
+          "type": "frame",
+          "name": "Modes",
+          "gap": 24,
+          "children": [
+            {
+              "id": "a",
+              "type": "frame",
+              "name": "Fill",
+              "width": 420,
+              "height": 236,
+              "fill": {
+                "type": "image",
+                "url": "./assets/data-centre-roof.jpg",
+                "mode": "fill"
+              },
+              "padding": 16,
+              "layout": "vertical",
+              "justifyContent": "end",
+              "children": [
+                {
+                  "id": "al",
+                  "type": "text",
+                  "name": "Caption",
+                  "content": "Fill",
+                  "fontFamily": "Inter Tight",
+                  "fontSize": 18,
+                  "fontWeight": "700",
+                  "fill": "#E6FC20",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "0.16em"
+                }
+              ],
+              "stroke": {
+                "fill": "#383838",
+                "thickness": 1
+              }
+            },
+            {
+              "id": "b",
+              "type": "frame",
+              "name": "Fit",
+              "width": 420,
+              "height": 236,
+              "fill": {
+                "type": "image",
+                "url": "./assets/data-centre-roof.jpg",
+                "mode": "fit"
+              },
+              "padding": 16,
+              "layout": "vertical",
+              "justifyContent": "end",
+              "children": [
+                {
+                  "id": "bl",
+                  "type": "text",
+                  "name": "Caption",
+                  "content": "Fit",
+                  "fontFamily": "Inter Tight",
+                  "fontSize": 18,
+                  "fontWeight": "700",
+                  "fill": "#E6FC20",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "0.16em"
+                }
+              ],
+              "stroke": {
+                "fill": "#383838",
+                "thickness": 1
+              }
+            },
+            {
+              "id": "c",
+              "type": "frame",
+              "name": "Stretch",
+              "width": 420,
+              "height": 236,
+              "fill": {
+                "type": "image",
+                "url": "./assets/data-centre-roof.jpg",
+                "mode": "stretch"
+              },
+              "padding": 16,
+              "layout": "vertical",
+              "justifyContent": "end",
+              "children": [
+                {
+                  "id": "cl",
+                  "type": "text",
+                  "name": "Caption",
+                  "content": "Stretch",
+                  "fontFamily": "Inter Tight",
+                  "fontSize": 18,
+                  "fontWeight": "700",
+                  "fill": "#E6FC20",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "0.16em"
+                }
+              ],
+              "stroke": {
+                "fill": "#383838",
+                "thickness": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "type": "frame",
+          "name": "Treatments",
+          "gap": 24,
+          "children": [
+            {
+              "id": "d",
+              "type": "frame",
+              "name": "Mono",
+              "width": 420,
+              "height": 236,
+              "fill": {
+                "type": "image",
+                "url": "./assets/data-centre-roof.jpg",
+                "mode": "fill"
+              },
+              "padding": 16,
+              "layout": "vertical",
+              "justifyContent": "end",
+              "children": [
+                {
+                  "id": "dl",
+                  "type": "text",
+                  "name": "Caption",
+                  "content": "Mono",
+                  "fontFamily": "Inter Tight",
+                  "fontSize": 18,
+                  "fontWeight": "700",
+                  "fill": "#E6FC20",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "0.16em"
+                }
+              ],
+              "imageFilter": "mono",
+              "stroke": {
+                "fill": "#383838",
+                "thickness": 1
+              }
+            },
+            {
+              "id": "e",
+              "type": "frame",
+              "name": "Desaturate",
+              "width": 420,
+              "height": 236,
+              "fill": {
+                "type": "image",
+                "url": "./assets/data-centre-roof.jpg",
+                "mode": "fill"
+              },
+              "padding": 16,
+              "layout": "vertical",
+              "justifyContent": "end",
+              "children": [
+                {
+                  "id": "el",
+                  "type": "text",
+                  "name": "Caption",
+                  "content": "Desaturate",
+                  "fontFamily": "Inter Tight",
+                  "fontSize": 18,
+                  "fontWeight": "700",
+                  "fill": "#E6FC20",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "0.16em"
+                }
+              ],
+              "imageFilter": "desaturate",
+              "stroke": {
+                "fill": "#383838",
+                "thickness": 1
+              }
+            },
+            {
+              "id": "f",
+              "type": "frame",
+              "name": "Local file",
+              "width": 420,
+              "height": 236,
+              "fill": {
+                "type": "image",
+                "url": "./assets/editorial-placeholder.jpg",
+                "mode": "fill"
+              },
+              "padding": 16,
+              "layout": "vertical",
+              "justifyContent": "end",
+              "children": [
+                {
+                  "id": "fl",
+                  "type": "text",
+                  "name": "Caption",
+                  "content": "Local file",
+                  "fontFamily": "Inter Tight",
+                  "fontSize": 18,
+                  "fontWeight": "700",
+                  "fill": "#E6FC20",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "0.16em"
+                }
+              ],
+              "imageFilter": "mono",
+              "stroke": {
+                "fill": "#383838",
+                "thickness": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

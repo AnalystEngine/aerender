@@ -1,0 +1,41 @@
+{
+  "aerender": 1,
+  "children": [
+    {
+      "id": "root",
+      "type": "frame",
+      "name": "min-max-width",
+      "fill": "#181818",
+      "padding": 24,
+      "gap": 16,
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "f1",
+          "type": "frame",
+          "name": "Capped",
+          "width": "fill_container",
+          "maxWidth": 300,
+          "height": 40,
+          "fill": "#2C2C2C"
+        },
+        {
+          "id": "f2",
+          "type": "frame",
+          "name": "Floor",
+          "minWidth": 160,
+          "height": 40,
+          "fill": "#2C2C2C"
+        },
+        {
+          "id": "spacer",
+          "type": "frame",
+          "name": "Wide",
+          "width": 600,
+          "height": 4,
+          "fill": "#383838"
+        }
+      ]
+    }
+  ]
+}

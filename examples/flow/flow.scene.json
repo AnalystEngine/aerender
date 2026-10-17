@@ -1,0 +1,272 @@
+{
+  "aerender": 1,
+  "imports": {
+    "s": "aerender:analystengine/slides"
+  },
+  "children": [
+    {
+      "id": "flow",
+      "type": "frame",
+      "name": "Phishing response",
+      "width": 1600,
+      "height": 900,
+      "fill": "$t:ae-bg",
+      "layout": "vertical",
+      "padding": [
+        72,
+        96
+      ],
+      "gap": 48,
+      "children": [
+        {
+          "id": "hdr",
+          "type": "frame",
+          "name": "Header",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "id": "eb",
+              "type": "text",
+              "name": "Eyebrow",
+              "content": "Runbook",
+              "textTransform": "uppercase",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 18,
+              "fontWeight": "700",
+              "letterSpacing": "$t:ae-tracking-eyebrow",
+              "fill": "$t:ae-eyebrow"
+            },
+            {
+              "id": "hl",
+              "type": "text",
+              "name": "Headline",
+              "content": "How a reported phishing email is handled",
+              "fontFamily": "$t:ae-font-display",
+              "fontSize": 56,
+              "fontWeight": "600",
+              "lineHeight": "$t:ae-lh-heading",
+              "letterSpacing": "$t:ae-tracking-tight",
+              "fill": "$t:ae-fg"
+            }
+          ]
+        },
+        {
+          "id": "cv",
+          "type": "frame",
+          "name": "Canvas",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "none",
+          "children": [
+            {
+              "id": "fRep",
+              "type": "ref",
+              "ref": "s:dTerminator",
+              "name": "Report",
+              "x": 0,
+              "y": 250,
+              "descendants": {
+                "s:dTerminatorL": {
+                  "content": "Staff report"
+                }
+              },
+              "width": 200,
+              "height": 84
+            },
+            {
+              "id": "fTri",
+              "type": "ref",
+              "ref": "s:dProcess",
+              "name": "Triage",
+              "x": 270,
+              "y": 232,
+              "descendants": {
+                "s:dProcessL": {
+                  "content": "Service desk triage"
+                }
+              },
+              "width": 260,
+              "height": 120
+            },
+            {
+              "id": "fDec",
+              "type": "ref",
+              "ref": "s:dDecision",
+              "name": "Decision",
+              "x": 600,
+              "y": 212,
+              "descendants": {
+                "s:dDecisionL": {
+                  "content": "Malicious?"
+                }
+              },
+              "width": 220,
+              "height": 160
+            },
+            {
+              "id": "fCon",
+              "type": "ref",
+              "ref": "s:dKey",
+              "name": "Contain",
+              "x": 880,
+              "y": 60,
+              "descendants": {
+                "s:dKeyL": {
+                  "content": "Contain and block sender"
+                }
+              },
+              "width": 260,
+              "height": 120
+            },
+            {
+              "id": "fNot",
+              "type": "ref",
+              "ref": "s:dProcess",
+              "name": "Notify",
+              "x": 1180,
+              "y": 60,
+              "descendants": {
+                "s:dProcessL": {
+                  "content": "Notify affected staff"
+                }
+              },
+              "width": 228,
+              "height": 120
+            },
+            {
+              "id": "fClo",
+              "type": "ref",
+              "ref": "s:dProcess",
+              "name": "Close",
+              "x": 880,
+              "y": 420,
+              "descendants": {
+                "s:dProcessL": {
+                  "content": "Close with feedback"
+                }
+              },
+              "width": 260,
+              "height": 120
+            },
+            {
+              "id": "fNote",
+              "type": "ref",
+              "ref": "s:dNote",
+              "name": "Note",
+              "x": 1180,
+              "y": 424,
+              "width": 228,
+              "descendants": {
+                "s:dNoteT": {
+                  "content": "Target: contained within one hour of the first report."
+                }
+              }
+            },
+            {
+              "id": "c1",
+              "type": "connector",
+              "from": "Report",
+              "to": "Triage",
+              "route": "elbow",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              },
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 20,
+              "labelFill": "$t:ae-fg-muted"
+            },
+            {
+              "id": "c2",
+              "type": "connector",
+              "from": "Triage",
+              "to": "Decision",
+              "route": "elbow",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              },
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 20,
+              "labelFill": "$t:ae-fg-muted"
+            },
+            {
+              "id": "c3",
+              "type": "connector",
+              "from": "Decision",
+              "to": "Contain",
+              "route": "elbow",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              },
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 20,
+              "labelFill": "$t:ae-fg-muted",
+              "fromSide": "top",
+              "toSide": "left",
+              "label": "Yes"
+            },
+            {
+              "id": "c4",
+              "type": "connector",
+              "from": "Decision",
+              "to": "Close",
+              "route": "elbow",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              },
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 20,
+              "labelFill": "$t:ae-fg-muted",
+              "fromSide": "bottom",
+              "toSide": "left",
+              "label": "No"
+            },
+            {
+              "id": "c5",
+              "type": "connector",
+              "from": "Contain",
+              "to": "Notify",
+              "route": "elbow",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              },
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 20,
+              "labelFill": "$t:ae-fg-muted"
+            },
+            {
+              "id": "c6",
+              "type": "connector",
+              "from": "Notify",
+              "to": "Triage",
+              "route": "elbow",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              },
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 20,
+              "labelFill": "$t:ae-fg-muted",
+              "fromSide": "top",
+              "toSide": "top",
+              "dash": "8 8",
+              "label": "Lessons feed the next triage"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

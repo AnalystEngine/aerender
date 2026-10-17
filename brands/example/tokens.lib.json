@@ -1,0 +1,86 @@
+{
+  "aerender": 1,
+  "variables": {
+    "bw-bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "bw-surface": {
+      "type": "color",
+      "value": "#F2F6F7"
+    },
+    "bw-ink": {
+      "type": "color",
+      "value": "#0F2430"
+    },
+    "bw-ink-muted": {
+      "type": "color",
+      "value": "#4A6270"
+    },
+    "bw-rule": {
+      "type": "color",
+      "value": "#D5DFE3"
+    },
+    "bw-accent": {
+      "type": "color",
+      "value": "#0E9F8E"
+    },
+    "bw-accent-ink": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "bw-highlight": {
+      "type": "color",
+      "value": "#F5B83D"
+    },
+    "bw-label": {
+      "type": "color",
+      "value": "$bw-accent"
+    },
+    "bw-font": {
+      "type": "string",
+      "value": "Inter, Noto Sans, sans-serif"
+    },
+    "bw-fs-display": {
+      "type": "number",
+      "value": 72
+    },
+    "bw-fs-body": {
+      "type": "number",
+      "value": 20
+    },
+    "bw-fs-label": {
+      "type": "number",
+      "value": 15
+    },
+    "bw-lh-tight": {
+      "type": "number",
+      "value": 1.05
+    },
+    "bw-lh-body": {
+      "type": "number",
+      "value": 1.45
+    },
+    "bw-tracking-label": {
+      "type": "string",
+      "value": "0.08em"
+    },
+    "bw-space-s": {
+      "type": "number",
+      "value": 16
+    },
+    "bw-space-m": {
+      "type": "number",
+      "value": 32
+    },
+    "bw-space-l": {
+      "type": "number",
+      "value": 64
+    },
+    "bw-radius": {
+      "type": "number",
+      "value": 12
+    }
+  },
+  "children": []
+}

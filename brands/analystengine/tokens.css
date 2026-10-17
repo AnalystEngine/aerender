@@ -1,0 +1,226 @@
+/* ============================================================
+   AnalystEngine — Design Tokens
+   ------------------------------------------------------------
+   Dark-mode tech / cybersecurity editorial.
+   Neutral near-black canvas on a three-tier surface stack;
+   electric yellow-green accent, reserved.
+
+   Projects import this file once at the root and reference the
+   CSS variables from components and theme configuration. Never
+   hardcode hex values, durations, or easings.
+
+   For Tailwind (v4) projects, expose these variables through
+   `@theme inline` in the single CSS source of truth — there is
+   no tailwind.config.ts to map them into.
+   ============================================================ */
+
+/* ---- Webfont: Aptos substitute ----
+   Aptos (Microsoft) is not freely redistributable. Inter Tight
+   is the nearest open humanist grotesque. Swap in Aptos /
+   Aptos Display once licensed files are available.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ───── Core palette ───── */
+  /* Neutral surface stack around the #181818 canvas: sunken → canvas →
+     section → card → hover. --ae-bg-elev is the card tier; every consumer of
+     it sits on this model. The stack is evenly, subtly stepped: card-vs-canvas
+     is ~1.15:1, so the rule token (below) is load-bearing for card edges. */
+  --ae-bg:            #181818;   /* canvas — page background (primary dark) */
+  --ae-bg-sunken:     #121212;   /* recessed wells, one step down          */
+  --ae-bg-section:    #1F1F1F;   /* page-section lift, NOT cards            */
+  --ae-bg-elev:       #242424;   /* cards and elevated surfaces            */
+  --ae-bg-hover:      #2C2C2C;   /* transient menu/nav/control hover       */
+
+  --ae-accent:        #E6FC20;   /* electric yellow-green — HERO, reserved */
+  --ae-accent-dim:    #B8CA1A;   /* pressed / dim / accent-on-light        */
+  --ae-negative:      #FF5A38;   /* flagged / negative / destructive (dark text on it) */
+  --ae-positive:      #3FD08A;   /* complementary green, positive          */
+
+  --ae-fg:            #F7F7F7;   /* primary text — off-white */
+  --ae-fg-muted:      #C7C7C7;   /* secondary text — 9.18:1 on the card tier, clears AA */
+  --ae-fg-dim:        #919191;   /* tertiary / metadata — 4.93:1 on the card tier, clears AA */
+  --ae-fg-faint:      #5C5C5C;   /* dividers, disabled controls and decorative rules ONLY; sub-AA, never readable text */
+  --ae-eyebrow:       var(--ae-fg-dim);        /* eyebrow / section-label ramp — muted, not the accent */
+
+  --ae-rule:          #383838;   /* solid — standard 1px rule colour (load-bearing for card edges) */
+  --ae-rule-strong:   #474747;   /* solid — when the border needs to be felt */
+  --ae-focus:         #C9C9C9;   /* focus ring — decoupled from the loud accent; sized so the rendered 50%-alpha ring clears the 3.0 non-text floor */
+
+  /* ───── Data-viz categorical palette ─────
+     Doctrine-owned, for data-viz categories only — not day-to-day UI.
+     --ae-orange is categorical here; it is no longer the warning semantic
+     (--ae-warning was repointed off it — see Semantic below). */
+  --ae-navy:          #0E2841;
+  --ae-teal:          #156082;
+  --ae-orange:        #E97132;
+  --ae-green-dk:      #196B24;
+  --ae-green:         #4EA72E;
+  --ae-cyan:          #0F9ED5;
+  --ae-magenta:       #A02B93;
+
+  /* ───── Semantic ───── */
+  --ae-success:       var(--ae-positive);
+  --ae-warning:       #fbbf24;   /* amber — repoints the warning semantic off --ae-orange */
+  --ae-info:          var(--ae-cyan);
+  --ae-danger:        var(--ae-negative);
+
+  /* ───── Typography ───── */
+  --ae-font-display:  'Inter Tight', 'Aptos Display', 'Segoe UI', system-ui, sans-serif;
+  --ae-font-body:     'Inter Tight', 'Aptos', 'Segoe UI', system-ui, sans-serif;
+  --ae-font-mono:     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Type scale — trimmed humanist, tight leading on display */
+  --ae-fs-display:    clamp(56px, 7vw, 112px);
+  --ae-fs-h1:         clamp(40px, 4.4vw, 64px);
+  --ae-fs-h2:         clamp(28px, 2.6vw, 40px);
+  --ae-fs-h3:         22px;
+  --ae-fs-h4:         18px;
+  --ae-fs-body:       16px;
+  --ae-fs-small:      14px;
+  --ae-fs-micro:      12px;
+  --ae-fs-eyebrow:    13px;
+
+  --ae-lh-display:    0.96;
+  --ae-lh-heading:    1.08;
+  --ae-lh-body:       1.5;
+
+  --ae-tracking-eyebrow: 0.16em;
+  --ae-tracking-display: -0.02em;
+  --ae-tracking-tight:   -0.01em;
+
+  /* ───── Spacing (8pt base) ───── */
+  --ae-s-1:  4px;
+  --ae-s-2:  8px;
+  --ae-s-3:  12px;
+  --ae-s-4:  16px;
+  --ae-s-5:  24px;
+  --ae-s-6:  32px;
+  --ae-s-7:  48px;
+  --ae-s-8:  64px;
+  --ae-s-9:  96px;
+  --ae-s-10: 128px;
+
+  /* ───── Radii — conservative; almost square ───── */
+  --ae-r-0: 0px;
+  --ae-r-1: 2px;
+  --ae-r-2: 4px;
+  --ae-r-3: 8px;
+  --ae-r-pill: 999px;
+
+  /* ───── Shadows — subtle; dark UI does not need much ───── */
+  --ae-shadow-1: 0 1px 0 rgba(255,255,255,0.04) inset, 0 2px 8px rgba(0,0,0,0.35);
+  --ae-shadow-2: 0 1px 0 rgba(255,255,255,0.05) inset, 0 12px 28px rgba(0,0,0,0.45);
+  --ae-glow-accent: 0 0 24px rgba(230,252,32,0.25);
+
+  /* ───── Motion ───── */
+  --ae-dur-1: 120ms;
+  --ae-dur-2: 200ms;
+  --ae-dur-3: 320ms;
+  --ae-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ============================================================
+   Semantic element styles — optional baseline
+   Projects using Tailwind should prefer utility classes mapped
+   to the variables above. These classes are provided for
+   vanilla CSS projects and for quick prototypes.
+   ============================================================ */
+html, body {
+  background: var(--ae-bg);
+  color: var(--ae-fg);
+  font-family: var(--ae-font-body);
+  font-size: var(--ae-fs-body);
+  line-height: var(--ae-lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.ae-display {
+  font-family: var(--ae-font-display);
+  font-weight: 700;
+  font-size: var(--ae-fs-display);
+  line-height: var(--ae-lh-display);
+  letter-spacing: var(--ae-tracking-display);
+  color: var(--ae-fg);
+  text-wrap: balance;
+}
+
+h1, .ae-h1 {
+  font-family: var(--ae-font-display);
+  font-weight: 700;
+  font-size: var(--ae-fs-h1);
+  line-height: var(--ae-lh-heading);
+  letter-spacing: var(--ae-tracking-tight);
+  color: var(--ae-fg);
+  text-wrap: balance;
+}
+
+h2, .ae-h2 {
+  font-family: var(--ae-font-display);
+  font-weight: 600;
+  font-size: var(--ae-fs-h2);
+  line-height: var(--ae-lh-heading);
+  letter-spacing: var(--ae-tracking-tight);
+  color: var(--ae-fg);
+}
+
+h3, .ae-h3 {
+  font-family: var(--ae-font-body);
+  font-weight: 600;
+  font-size: var(--ae-fs-h3);
+  line-height: 1.25;
+  color: var(--ae-fg);
+}
+
+h4, .ae-h4 {
+  font-family: var(--ae-font-body);
+  font-weight: 600;
+  font-size: var(--ae-fs-h4);
+  line-height: 1.3;
+  color: var(--ae-fg);
+}
+
+p, .ae-body {
+  font-size: var(--ae-fs-body);
+  line-height: var(--ae-lh-body);
+  color: var(--ae-fg-muted);
+  text-wrap: pretty;
+}
+
+.ae-small    { font-size: var(--ae-fs-small); color: var(--ae-fg-muted); }
+.ae-micro    { font-size: var(--ae-fs-micro); color: var(--ae-fg-dim); }
+
+/* Eyebrow — the signature AnalystEngine label treatment */
+.ae-eyebrow {
+  font-family: var(--ae-font-body);
+  font-weight: 700;
+  font-size: var(--ae-fs-eyebrow);
+  letter-spacing: var(--ae-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ae-eyebrow);
+}
+
+/* Inline keywords — bold uppercase pulled from deck style */
+.ae-keyword {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ae-fg);
+}
+
+code, .ae-code {
+  font-family: var(--ae-font-mono);
+  font-size: 0.92em;
+  color: var(--ae-accent);
+  background: rgba(230,252,32,0.08);
+  padding: 2px 6px;
+  border-radius: var(--ae-r-2);
+}
+
+hr, .ae-rule {
+  border: 0;
+  border-top: 1px solid var(--ae-rule);
+  margin: var(--ae-s-6) 0;
+}

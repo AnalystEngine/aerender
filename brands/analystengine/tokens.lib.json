@@ -1,0 +1,350 @@
+{
+  "aerender": 1,
+  "variables": {
+    "ae-bg": {
+      "type": "color",
+      "value": "#181818"
+    },
+    "ae-bg-sunken": {
+      "type": "color",
+      "value": "#121212"
+    },
+    "ae-bg-section": {
+      "type": "color",
+      "value": "#1F1F1F"
+    },
+    "ae-bg-elev": {
+      "type": "color",
+      "value": "#242424"
+    },
+    "ae-bg-hover": {
+      "type": "color",
+      "value": "#2C2C2C"
+    },
+    "ae-accent": {
+      "type": "color",
+      "value": "#E6FC20"
+    },
+    "ae-accent-dim": {
+      "type": "color",
+      "value": "#B8CA1A"
+    },
+    "ae-negative": {
+      "type": "color",
+      "value": "#FF5A38"
+    },
+    "ae-positive": {
+      "type": "color",
+      "value": "#3FD08A"
+    },
+    "ae-fg": {
+      "type": "color",
+      "value": "#F7F7F7"
+    },
+    "ae-fg-muted": {
+      "type": "color",
+      "value": "#C7C7C7"
+    },
+    "ae-fg-dim": {
+      "type": "color",
+      "value": "#919191"
+    },
+    "ae-fg-faint": {
+      "type": "color",
+      "value": "#5C5C5C"
+    },
+    "ae-eyebrow": {
+      "type": "color",
+      "value": "$ae-fg-dim"
+    },
+    "ae-rule": {
+      "type": "color",
+      "value": "#383838"
+    },
+    "ae-rule-strong": {
+      "type": "color",
+      "value": "#474747"
+    },
+    "ae-focus": {
+      "type": "color",
+      "value": "#C9C9C9"
+    },
+    "ae-navy": {
+      "type": "color",
+      "value": "#0E2841"
+    },
+    "ae-teal": {
+      "type": "color",
+      "value": "#156082"
+    },
+    "ae-orange": {
+      "type": "color",
+      "value": "#E97132"
+    },
+    "ae-green-dk": {
+      "type": "color",
+      "value": "#196B24"
+    },
+    "ae-green": {
+      "type": "color",
+      "value": "#4EA72E"
+    },
+    "ae-cyan": {
+      "type": "color",
+      "value": "#0F9ED5"
+    },
+    "ae-magenta": {
+      "type": "color",
+      "value": "#A02B93"
+    },
+    "ae-success": {
+      "type": "color",
+      "value": "$ae-positive"
+    },
+    "ae-warning": {
+      "type": "color",
+      "value": "#FBBF24"
+    },
+    "ae-info": {
+      "type": "color",
+      "value": "$ae-cyan"
+    },
+    "ae-danger": {
+      "type": "color",
+      "value": "$ae-negative"
+    },
+    "ae-font-display": {
+      "type": "string",
+      "value": "Inter Tight, Aptos Display, Segoe UI, system-ui, sans-serif"
+    },
+    "ae-font-body": {
+      "type": "string",
+      "value": "Inter Tight, Aptos, Segoe UI, system-ui, sans-serif"
+    },
+    "ae-font-mono": {
+      "type": "string",
+      "value": "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
+    },
+    "ae-fs-display": {
+      "type": "number",
+      "value": 101
+    },
+    "ae-fs-h1": {
+      "type": "number",
+      "value": 63
+    },
+    "ae-fs-h2": {
+      "type": "number",
+      "value": 37
+    },
+    "ae-fs-h3": {
+      "type": "number",
+      "value": 22
+    },
+    "ae-fs-h4": {
+      "type": "number",
+      "value": 18
+    },
+    "ae-fs-body": {
+      "type": "number",
+      "value": 16
+    },
+    "ae-fs-small": {
+      "type": "number",
+      "value": 14
+    },
+    "ae-fs-micro": {
+      "type": "number",
+      "value": 12
+    },
+    "ae-fs-eyebrow": {
+      "type": "number",
+      "value": 13
+    },
+    "ae-lh-display": {
+      "type": "number",
+      "value": 0.96
+    },
+    "ae-lh-heading": {
+      "type": "number",
+      "value": 1.08
+    },
+    "ae-lh-body": {
+      "type": "number",
+      "value": 1.5
+    },
+    "ae-tracking-eyebrow": {
+      "type": "string",
+      "value": "0.16em"
+    },
+    "ae-tracking-display": {
+      "type": "string",
+      "value": "-0.02em"
+    },
+    "ae-tracking-tight": {
+      "type": "string",
+      "value": "-0.01em"
+    },
+    "ae-s-1": {
+      "type": "number",
+      "value": 4
+    },
+    "ae-s-2": {
+      "type": "number",
+      "value": 8
+    },
+    "ae-s-3": {
+      "type": "number",
+      "value": 12
+    },
+    "ae-s-4": {
+      "type": "number",
+      "value": 16
+    },
+    "ae-s-5": {
+      "type": "number",
+      "value": 24
+    },
+    "ae-s-6": {
+      "type": "number",
+      "value": 32
+    },
+    "ae-s-7": {
+      "type": "number",
+      "value": 48
+    },
+    "ae-s-8": {
+      "type": "number",
+      "value": 64
+    },
+    "ae-s-9": {
+      "type": "number",
+      "value": 96
+    },
+    "ae-s-10": {
+      "type": "number",
+      "value": 128
+    },
+    "ae-r-0": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-r-1": {
+      "type": "number",
+      "value": 2
+    },
+    "ae-r-2": {
+      "type": "number",
+      "value": 4
+    },
+    "ae-r-3": {
+      "type": "number",
+      "value": 8
+    },
+    "ae-r-pill": {
+      "type": "number",
+      "value": 999
+    },
+    "ae-shadow-1-inner-x": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-shadow-1-inner-y": {
+      "type": "number",
+      "value": 1
+    },
+    "ae-shadow-1-inner-blur": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-shadow-1-inner-spread": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-shadow-1-inner-color": {
+      "type": "color",
+      "value": "#FFFFFF0A"
+    },
+    "ae-shadow-1-outer-x": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-shadow-1-outer-y": {
+      "type": "number",
+      "value": 2
+    },
+    "ae-shadow-1-outer-blur": {
+      "type": "number",
+      "value": 8
+    },
+    "ae-shadow-1-outer-spread": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-shadow-1-outer-color": {
+      "type": "color",
+      "value": "#00000059"
+    },
+    "ae-shadow-2-inner-x": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-shadow-2-inner-y": {
+      "type": "number",
+      "value": 1
+    },
+    "ae-shadow-2-inner-blur": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-shadow-2-inner-spread": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-shadow-2-inner-color": {
+      "type": "color",
+      "value": "#FFFFFF0D"
+    },
+    "ae-shadow-2-outer-x": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-shadow-2-outer-y": {
+      "type": "number",
+      "value": 12
+    },
+    "ae-shadow-2-outer-blur": {
+      "type": "number",
+      "value": 28
+    },
+    "ae-shadow-2-outer-spread": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-shadow-2-outer-color": {
+      "type": "color",
+      "value": "#00000073"
+    },
+    "ae-glow-accent-outer-x": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-glow-accent-outer-y": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-glow-accent-outer-blur": {
+      "type": "number",
+      "value": 24
+    },
+    "ae-glow-accent-outer-spread": {
+      "type": "number",
+      "value": 0
+    },
+    "ae-glow-accent-outer-color": {
+      "type": "color",
+      "value": "#E6FC2040"
+    }
+  },
+  "children": []
+}

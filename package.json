@@ -1,0 +1,44 @@
+{
+  "name": "@analystengine/aerender",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mock up any visual from a JSON scene (screens, dashboards, marketing graphics, documents, diagrams and slides) so you can agree it before you build it.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnalystEngine/aerender.git"
+  },
+  "bin": {
+    "aerender": "bin/aerender.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "brands/",
+    "skills/",
+    "examples/",
+    "!examples/**/renders/",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --import tsx tests/run.ts",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/inter-tight": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/noto-sans": "^5.3.0",
+    "lucide-static": "^1.59.0",
+    "playwright-core": "1.64.1",
+    "tsx": "^4.23.15"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}
