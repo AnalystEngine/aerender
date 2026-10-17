@@ -10,7 +10,7 @@ aerender renders a JSON scene (`*.scene.json`) of frames, text, shapes, icons an
 ## Setup (do this first)
 
 1. Run `aerender --version`. If the command is missing, run `npm install -g github:AnalystEngine/aerender`.
-2. Run `aerender doctor` and apply every fix it prints. It checks Node 22+, Chrome, fonts, icons and the bundled libraries, and renders a test scene.
+2. Run `aerender doctor` and apply every fix it prints. It checks Node 22+, Chrome, fonts, icons and the brand libraries, and renders a test scene.
 
 ## Choose the brand
 

@@ -30,7 +30,7 @@ Agents go straight to building. They write the React page or generate the PowerP
 - **Diagrams.** `connector` nodes join boxes with straight or right-angled lines, arrows and labels, routed from the real box positions after layout.
 - **Photos with brand treatment.** `asset add` downloads an image next to the scene; `imageFilter: "mono"` gives it the brand's monochrome look without greying the text on top.
 - **Clean hand-off.** `export spec` gives a build agent the text, components and tokens; `export html` gives HTML that keeps the CSS custom properties.
-- **Works with any agent.** Everything is a CLI command. The skills in `skills/` teach Claude Code and other agents the workflow.
+- **Works with any agent.** Everything is a CLI command. The skill in `skills/aerender/` teaches Claude Code and other agents the workflow, and each brand's `GUIDE.md` teaches its rules.
 
 ## Examples
 
@@ -101,7 +101,7 @@ aerender batch examples/deck/deck.scene.json '[
 ```
 aerender tokens import brand.css --out brand/tokens.lib.json
 aerender render examples/example-brand/social.scene.json
-aerender lint examples/example-brand/social.scene.json --brand aerender:example
+aerender lint examples/example-brand/social.scene.json --brand example
 ```
 
 ## Install
@@ -113,15 +113,15 @@ npm install -g github:AnalystEngine/aerender
 aerender doctor
 ```
 
-`doctor` checks Node, Chrome, fonts, icons and the bundled libraries, renders a test scene, and prints a fix for anything missing. aerender looks for Chrome in `AERENDER_CHROME`, then on the `PATH` (`google-chrome`, `chromium`), then in a Playwright install (`npx playwright install chromium`).
+`doctor` checks Node, Chrome, fonts, icons and the brand libraries, renders a test scene, and prints a fix for anything missing. aerender looks for Chrome in `AERENDER_CHROME`, then on the `PATH` (`google-chrome`, `chromium`), then in a Playwright install (`npx playwright install chromium`).
 
-Install the skills for your agent:
+Install the skill for your agent:
 
 ```
 npx skills add AnalystEngine/aerender
 ```
 
-Or copy `skills/aerender/` (and `skills/analystengine-brand/` if you need it) into a project's `.claude/skills/`. Each skill's setup step installs the CLI if it is missing.
+Or copy `skills/aerender/` into a project's `.claude/skills/`. The skill's setup step installs the CLI if it is missing.
 
 ## Quick start
 
@@ -131,31 +131,59 @@ aerender insert post.scene.json / '{"type":"ref","ref":"a:aSocial","name":"Card"
 aerender set post.scene.json "Card/Headline" content="Review AI tools before staff adopt them"
 aerender tree post.scene.json
 aerender render post.scene.json                       # renders/card@2x.png
-aerender lint post.scene.json --brand aerender:analystengine
+aerender lint post.scene.json --brand analystengine
 ```
 
-Run `aerender <command> --help` for any command, and `aerender libs` for the bundled libraries.
+Run `aerender <command> --help` for any command, `aerender brands` for the brands, and `aerender libs` for their libraries.
 
-## Brand kits
+## Brands
 
-| Kit | Libraries | Purpose |
+A brand is a folder of tokens, libraries and a guide. `aerender brands` lists every brand aerender finds, `aerender brand <id>` prints its guide, and scenes import its libraries as `aerender:<id>/<library>`.
+
+### Built-in brands
+
+| Brand | Libraries | Purpose |
 |---|---|---|
-| `brands/analystengine/` | `aerender:analystengine/tokens`, `/ui`, `/assets`, `/slides` | AnalystEngine's design system: a full worked example covering screens, marketing graphics, documents, slides and diagrams |
-| `brands/example/` | `aerender:example/tokens`, `/assets` | Brightwater, a fictional brand built from a 30-line CSS file |
+| `analystengine` | `aerender:analystengine/tokens`, `/ui`, `/assets`, `/slides` | AnalystEngine's design system: a full worked example covering screens, marketing graphics, documents, slides and diagrams |
+| `example` | `aerender:example/tokens`, `/assets` | Brightwater, a fictional brand built from a 30-line CSS file |
+
+### The brand folder
+
+```
+<brand-id>/                 folder name = brand id (lowercase letters, digits, hyphens)
+  GUIDE.md                  required. First line "# <Display name>"; first paragraph = one-line description.
+                            Then: which library for which asset, non-negotiable rules, voice, checklist.
+  tokens.lib.json           required (generate with `aerender tokens import tokens.css --out tokens.lib.json`)
+  tokens.css                optional (token source)
+  ui.lib.json, slides.lib.json, assets.lib.json   optional
+  components.md             optional component catalogue (`aerender brand <id> --components`)
+  assets/                   optional images, used as `aerender:<brand-id>/assets/<file>`
+```
+
+Folders starting with `_` or `.` are ignored, so keep templates as `_template/`. `aerender brands` warns about a folder that has no `GUIDE.md` or `tokens.lib.json`.
+
+### Private brands
+
+Keep private and client brands in your own directories and list them in `AERENDER_BRANDS`, separated by colons:
+
+```
+export AERENDER_BRANDS='$HOME/brands:/srv/shared/*/brands'
+```
+
+aerender expands `$VAR` and `${VAR}` itself, so the variable works even when set unexpanded, and matches `*` against directory names. It skips an entry that names an unset variable. It searches each entry in order, then the built-in brands, and skips directories that do not exist. When two directories hold the same brand id, the first wins and `aerender brands` notes the one it hides. Never commit a private brand to this repository.
 
 ### Creating a new brand
 
-1. Write the client's colours, fonts, sizes and spacing as CSS custom properties in a `tokens.css`.
+1. Write the brand's colours, fonts, sizes and spacing as CSS custom properties in a `tokens.css`.
 2. Run `aerender tokens import tokens.css --out tokens.lib.json`.
 3. Build templates and components bound to those variables with `aerender batch`.
-4. Check them with `aerender lint --brand tokens.css`.
+4. Write `GUIDE.md`, put the folder in a directory listed in `AERENDER_BRANDS`, and check it with `aerender brands` and `aerender lint --brand <id>`.
 
 The full guide is `skills/aerender/references/new-design-system.md`, and `brands/example/` is the worked example.
 
-## The skills
+## The skill
 
-- `skills/aerender/`: the generic skill. It covers setup, the edit and render workflow, and commands, with references on the format, composition for each kind of visual, and building a new design system.
-- `skills/analystengine-brand/`: producing AnalystEngine-branded assets. It covers which library to use for which asset, the brand rules and voice, and a pre-delivery checklist.
+`skills/aerender/` covers setup, choosing a brand, the edit and render workflow, and commands, with references on the format, composition for each kind of visual, and building a new brand. Brand rules live in each brand's `GUIDE.md`, not in the skill.
 
 ## Limitations
 
