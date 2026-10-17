@@ -36,30 +36,6 @@ Agents go straight to building. They write the React page or generate the PowerP
 
 Every example is in `examples/`, uses fictional data, and renders with `aerender render <file>`.
 
-### A slide deck in deck view
-
-![Six-slide deck](docs/images/deck.jpg)
-
-```
-aerender render examples/deck/deck.scene.json --deck   # slide PNGs, deck.pdf, deck.html, deck.png
-```
-
-### A revision loop on one slide
-
-```
-aerender tree examples/deck/deck.scene.json --node Findings
-aerender set examples/deck/deck.scene.json "Findings/Headline" content="Three gaps put member data at risk"
-aerender render examples/deck/deck.scene.json --node Findings
-```
-
-Several changes in one atomic step:
-
-```
-aerender batch examples/deck/deck.scene.json '[
-  {"op":"set","path":"Findings/Column[0]/Claim","props":{"content":"11 of 14 tools were never reviewed"}},
-  {"op":"move","path":"Recommendations","to":"/","index":1}]'
-```
-
 ### A product dashboard
 
 ![Dashboard built from the AnalystEngine UI library](docs/images/dashboard.jpg)
@@ -92,6 +68,30 @@ aerender render examples/one-pager/one-pager.scene.json --format pdf
 ```
 aerender render examples/flow/flow.scene.json
 aerender set examples/flow/flow.scene.json "Contain" x=860
+```
+
+### A slide deck in deck view
+
+![Six-slide deck](docs/images/deck.jpg)
+
+```
+aerender render examples/deck/deck.scene.json --deck   # slide PNGs, deck.pdf, deck.html, deck.png
+```
+
+### A revision loop on one slide
+
+```
+aerender tree examples/deck/deck.scene.json --node Findings
+aerender set examples/deck/deck.scene.json "Findings/Headline" content="Three gaps put member data at risk"
+aerender render examples/deck/deck.scene.json --node Findings
+```
+
+Several changes in one atomic step:
+
+```
+aerender batch examples/deck/deck.scene.json '[
+  {"op":"set","path":"Findings/Column[0]/Claim","props":{"content":"11 of 14 tools were never reviewed"}},
+  {"op":"move","path":"Recommendations","to":"/","index":1}]'
 ```
 
 ### Bring your own brand
