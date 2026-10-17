@@ -1,4 +1,4 @@
-# AnalystEngine component and template catalogue
+# AnalystEngine components
 
 Ids to use in `ref`, and the descendant keys to override (with the import prefix shown). `aerender tree aerender:analystengine/<library> --depth 1` lists the same ids.
 

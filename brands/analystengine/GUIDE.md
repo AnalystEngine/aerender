@@ -1,15 +1,8 @@
----
-name: analystengine-brand
-description: Produce AnalystEngine-branded visuals with aerender (product screens and dashboards, social and LinkedIn graphics, web heroes, A4 one-pagers and report covers, flow diagrams and slide decks) using the bundled AnalystEngine tokens, components and templates, and check them against the brand rules. Use it whenever the output carries the AnalystEngine brand. Do not use it for client-branded work; use the aerender skill's new-design-system guide for that.
----
+# AnalystEngine
 
-# AnalystEngine brand with aerender
+Dark-mode technical editorial: a near-black canvas, one yellow-green accent, one type family and left-aligned grids.
 
-AnalystEngine's visual identity is dark-mode technical editorial: a neutral near-black canvas, one loud yellow-green accent used with discipline, one type family, left-aligned grids and generous whitespace. This skill tells you which library to use for each asset, the rules that must hold, and how to check them.
-
-## Setup
-
-This skill drives the aerender CLI. Run `aerender --version`; if it is missing, run `npm install -g github:AnalystEngine/aerender`, then `aerender doctor`. The `aerender` skill explains the commands and the scene format; read it first if you have not used aerender.
+Use this brand for every visual that carries the AnalystEngine name: product screens and dashboards, social and LinkedIn graphics, web heroes, A4 one-pagers and report covers, flow diagrams and slide decks.
 
 ## Which library for which asset
 
@@ -22,7 +15,7 @@ This skill drives the aerender CLI. Run `aerender --version`; if it is missing, 
 | Flow diagram | `"s": "aerender:analystengine/slides"` | kit parts `dProcess`, `dKey`, `dDecision`, `dTerminator`, `dNote`, `dLane` |
 | Anything custom | `"t": "aerender:analystengine/tokens"` | frames bound to `$t:ae-*` variables |
 
-Every library imports the tokens as `t`, so `$t:ae-*` variables work in any scene that imports one of them. The full catalogue, with component ids and the text keys to override, is in [references/components.md](references/components.md). `aerender tree aerender:analystengine/<library> --depth 1` lists components with their ids.
+Every library imports the tokens as `t`, so `$t:ae-*` variables work in any scene that imports one of them. `aerender brand analystengine --components` prints the full catalogue, with component ids and the text keys to override. Images in `assets/` are available as `aerender:analystengine/assets/<file>`.
 
 Typical start:
 
@@ -56,7 +49,7 @@ aerender render post.scene.json
 ## Before you deliver
 
 1. `aerender validate <file>` is clean.
-2. `aerender lint <file> --brand aerender:analystengine` is clean. It flags any colour outside the brand palette, as well as layout problems.
+2. `aerender lint <file> --brand analystengine` is clean. It flags any colour outside the brand palette, as well as layout problems.
 3. Render and look at every visual at full size, and check:
    - Exactly one accent use per visual.
    - Eyebrows are capitals and tracked; headlines state the point in nine words or fewer.
@@ -64,3 +57,15 @@ aerender render post.scene.json
    - Photos are monochrome and credited where the licence requires.
    - No real names, emails or client data that the user did not supply.
 4. Hand off with `aerender export spec <file> --node <frame>`.
+
+## Files
+
+| File | Alias | Contents |
+|---|---|---|
+| `tokens.css` | | The source design tokens |
+| `tokens.lib.json` | `aerender:analystengine/tokens` | The tokens as variables, generated with `aerender tokens import tokens.css` |
+| `ui.lib.json` | `aerender:analystengine/ui` | Screen and dashboard components |
+| `assets.lib.json` | `aerender:analystengine/assets` | Social card, LinkedIn square, A4 report cover, A4 one-pager, web hero |
+| `slides.lib.json` | `aerender:analystengine/slides` | 1920x1080 slide layouts and a diagram kit |
+| `components.md` | | Component ids and override keys |
+| `assets/` | `aerender:analystengine/assets/<file>` | Images used by the templates (see `CREDITS.txt`) |
