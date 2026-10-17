@@ -1,0 +1,174 @@
+{
+  "aerender": 1,
+  "imports": {
+    "t": "tokens.lib.json"
+  },
+  "variables": {},
+  "children": [
+    {
+      "id": "bwSocial",
+      "type": "frame",
+      "name": "Social card",
+      "reusable": true,
+      "x": 0,
+      "y": 0,
+      "width": 1200,
+      "height": 630,
+      "clip": true,
+      "fill": "$t:bw-bg",
+      "padding": "$t:bw-space-l",
+      "gap": "$t:bw-space-l",
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "bwSocialText",
+          "type": "frame",
+          "name": "Text",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": "$t:bw-space-m",
+          "children": [
+            {
+              "id": "bwSocialTag",
+              "type": "frame",
+              "name": "Tag",
+              "padding": [
+                8,
+                16
+              ],
+              "cornerRadius": 999,
+              "fill": "$t:bw-surface",
+              "children": [
+                {
+                  "id": "bwSocialTagT",
+                  "type": "text",
+                  "name": "Label",
+                  "content": "Community energy",
+                  "fontFamily": "$t:bw-font",
+                  "fontSize": "$t:bw-fs-label",
+                  "fontWeight": "700",
+                  "textTransform": "uppercase",
+                  "letterSpacing": "$t:bw-tracking-label",
+                  "fill": "$t:bw-label"
+                }
+              ]
+            },
+            {
+              "id": "bwSocialH",
+              "type": "text",
+              "name": "Headline",
+              "content": "Solar for every school roof in the valley by 2028",
+              "fontFamily": "$t:bw-font",
+              "fontSize": "$t:bw-fs-display",
+              "fontWeight": "700",
+              "lineHeight": "$t:bw-lh-tight",
+              "fill": "$t:bw-ink",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            },
+            {
+              "id": "bwSocialSub",
+              "type": "text",
+              "name": "Subtitle",
+              "content": "How 40 schools will share one battery and cut their bills by a third.",
+              "fontFamily": "$t:bw-font",
+              "fontSize": "$t:bw-fs-body",
+              "fontWeight": "normal",
+              "lineHeight": "$t:bw-lh-body",
+              "fill": "$t:bw-ink-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            }
+          ]
+        },
+        {
+          "id": "bwSocialPanel",
+          "type": "frame",
+          "name": "Panel",
+          "width": 360,
+          "height": "fill_container",
+          "cornerRadius": "$t:bw-radius",
+          "fill": "$t:bw-accent",
+          "layout": "vertical",
+          "justifyContent": "space_between",
+          "padding": "$t:bw-space-m",
+          "children": [
+            {
+              "id": "bwSocialIcon",
+              "type": "icon",
+              "name": "Icon",
+              "icon": "sun",
+              "width": 72,
+              "height": 72,
+              "lineWidth": 1.5,
+              "fill": "$t:bw-accent-ink"
+            },
+            {
+              "id": "bwSocialStat",
+              "type": "frame",
+              "name": "Figure",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "id": "bwSocialStatV",
+                  "type": "text",
+                  "name": "Value",
+                  "content": "40 schools",
+                  "fontFamily": "$t:bw-font",
+                  "fontSize": 44,
+                  "fontWeight": "700",
+                  "lineHeight": "$t:bw-lh-tight",
+                  "fill": "$t:bw-accent-ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container"
+                },
+                {
+                  "id": "bwSocialStatL",
+                  "type": "text",
+                  "name": "Label",
+                  "content": "one shared battery",
+                  "fontFamily": "$t:bw-font",
+                  "fontSize": "$t:bw-fs-body",
+                  "fontWeight": "normal",
+                  "lineHeight": "$t:bw-lh-body",
+                  "fill": "$t:bw-accent-ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container"
+                }
+              ]
+            },
+            {
+              "id": "bwSocialMark",
+              "type": "frame",
+              "name": "Wordmark",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "bwSocialDot",
+                  "type": "ellipse",
+                  "name": "Dot",
+                  "width": 14,
+                  "height": 14,
+                  "fill": "$t:bw-highlight"
+                },
+                {
+                  "id": "bwSocialName",
+                  "type": "text",
+                  "name": "Name",
+                  "content": "Brightwater",
+                  "fontFamily": "$t:bw-font",
+                  "fontSize": 24,
+                  "fontWeight": "700",
+                  "fill": "$t:bw-accent-ink"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

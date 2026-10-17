@@ -1,0 +1,28 @@
+/* Brightwater Energy: a fictional brand used to show how aerender builds a design system from CSS tokens. */
+:root {
+  /* Colour */
+  --bw-bg:          #FFFFFF;
+  --bw-surface:     #F2F6F7;
+  --bw-ink:         #0F2430;
+  --bw-ink-muted:   #4A6270;
+  --bw-rule:        #D5DFE3;
+  --bw-accent:      #0E9F8E;
+  --bw-accent-ink:  #FFFFFF;
+  --bw-highlight:   #F5B83D;
+  --bw-label:       var(--bw-accent);
+
+  /* Type */
+  --bw-font:        'Inter', 'Noto Sans', sans-serif;
+  --bw-fs-display:  clamp(44px, 5vw, 72px);
+  --bw-fs-body:     20px;
+  --bw-fs-label:    15px;
+  --bw-lh-tight:    1.05;
+  --bw-lh-body:     1.45;
+  --bw-tracking-label: 0.08em;
+
+  /* Space and shape */
+  --bw-space-s:     16px;
+  --bw-space-m:     32px;
+  --bw-space-l:     64px;
+  --bw-radius:      12px;
+}
