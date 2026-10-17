@@ -1,7 +1,8 @@
 // Layout lint: renders the design and measures the DOM for the mistakes agents make most.
 import fs from "node:fs";
 import path from "node:path";
-import { load, buildScene, LIB_ALIAS, PKG_ROOT } from "./doc.js";
+import { load, buildScene, LIB_ALIAS } from "./doc.js";
+import { discoverBrands, findBrand } from "./brands.js";
 import { expandAll, Problems, RNode, resolveValue, defaultTheme } from "./resolve.js";
 import { Compiler } from "./compile.js";
 import { withPage } from "./browser.js";
@@ -56,6 +57,19 @@ function colourValues(n: RNode, sc: any, theme: any, out: { c: string; where: st
   for (const c of n.children ?? []) colourValues(c, sc, theme, out);
 }
 
+/** Text holding a brand's colours: a brand id (bare or "aerender:<id>") or a tokens file. */
+function brandPalette(brand: string): string {
+  const bare = /^[a-z0-9][a-z0-9-]*$/.test(brand) && !fs.existsSync(brand) && discoverBrands().brands.some((b) => b.id === brand);
+  if (brand.startsWith(LIB_ALIAS) || bare) {
+    const b = findBrand(brand);
+    const files = ["tokens.css", "tokens.lib.json"].map((f) => path.join(b.dir, f)).filter((f) => fs.existsSync(f));
+    if (!files.length) throw new Error(`--brand: brand "${b.id}" has no tokens.css or tokens.lib.json (${b.dir})`);
+    return files.map((f) => fs.readFileSync(f, "utf8")).join("\n");
+  }
+  if (!fs.existsSync(brand)) throw new Error(`--brand: ${brand} is neither a brand nor a file. Brands: ${discoverBrands().brands.map((b) => b.id).join(", ")}`);
+  return fs.readFileSync(brand, "utf8");
+}
+
 export async function lint(file: string, opts: { nodes?: string[]; brand?: string }) {
   const doc = load(file);
   const findings: Finding[] = [];
@@ -68,10 +82,7 @@ export async function lint(file: string, opts: { nodes?: string[]; brand?: strin
   targets.forEach((t) => staticChecks(t, findings));
 
   if (opts.brand) {
-    // "aerender:<brand>" checks against a bundled brand's tokens.css.
-    const brandFile = opts.brand.startsWith(LIB_ALIAS) ? path.join(PKG_ROOT, "brands", opts.brand.slice(LIB_ALIAS.length), "tokens.css") : opts.brand;
-    if (!fs.existsSync(brandFile)) throw new Error(`--brand: ${brandFile} not found`);
-    const palette = hexes(fs.readFileSync(brandFile, "utf8"));
+    const palette = hexes(brandPalette(opts.brand));
     const used: { c: string; where: string }[] = [];
     targets.forEach((t) => colourValues(t, sc, defaultTheme(sc), used));
     const seen = new Set<string>();
