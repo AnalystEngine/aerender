@@ -1,0 +1,46 @@
+{
+  "aerender": 1,
+  "imports": {
+    "a": "aerender:analystengine/assets"
+  },
+  "children": [
+    {
+      "id": "card",
+      "type": "ref",
+      "ref": "a:aSocial",
+      "name": "Social card",
+      "x": 0,
+      "y": 0,
+      "descendants": {
+        "a:aSocialEbE": {
+          "content": "Research note"
+        },
+        "a:aSocialH": {
+          "content": "Shadow AI is a governance gap, not a tooling gap"
+        },
+        "a:aSocialSub": {
+          "content": "Six questions every board should ask before approving another AI tool."
+        }
+      }
+    },
+    {
+      "id": "square",
+      "type": "ref",
+      "ref": "a:aSquare",
+      "name": "LinkedIn square",
+      "x": 1300,
+      "y": 0,
+      "descendants": {
+        "a:aSquareEbE": {
+          "content": "Briefing"
+        },
+        "a:aSquareH": {
+          "content": "Most AI use bypasses the controls you already run"
+        },
+        "a:aSquareMeta": {
+          "content": "October 2026"
+        }
+      }
+    }
+  ]
+}

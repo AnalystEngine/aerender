@@ -1,0 +1,43 @@
+{
+  "aerender": 1,
+  "variables": {
+    "sidebar-w": {
+      "type": "number",
+      "value": 256
+    },
+    "icon-nav": {
+      "type": "number",
+      "value": 24
+    }
+  },
+  "children": [
+    {
+      "id": "root",
+      "type": "frame",
+      "name": "size-variable",
+      "fill": "#181818",
+      "padding": 24,
+      "gap": 16,
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "f1",
+          "type": "frame",
+          "name": "Sidebar",
+          "width": "$sidebar-w",
+          "height": "$sidebar-w",
+          "fill": "#242424"
+        },
+        {
+          "id": "i1",
+          "type": "icon",
+          "name": "Nav icon",
+          "icon": "briefcase",
+          "width": "$icon-nav",
+          "height": "$icon-nav",
+          "fill": "#F7F7F7"
+        }
+      ]
+    }
+  ]
+}

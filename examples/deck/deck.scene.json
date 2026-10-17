@@ -1,0 +1,455 @@
+{
+  "aerender": 1,
+  "imports": {
+    "s": "aerender:analystengine/slides"
+  },
+  "children": [
+    {
+      "id": "n1",
+      "type": "ref",
+      "ref": "s:sTitle",
+      "name": "Cover",
+      "x": 0,
+      "y": 0,
+      "descendants": {
+        "s:sTitleEb": {
+          "content": "Board risk committee"
+        },
+        "s:sTitleSub": {
+          "content": "Findings for Northbridge Building Society"
+        }
+      }
+    },
+    {
+      "id": "n2",
+      "type": "ref",
+      "ref": "s:sSplit",
+      "name": "Executive summary",
+      "x": 2020,
+      "y": 0,
+      "descendants": {
+        "s:sSplitEb": {
+          "content": "Executive summary"
+        },
+        "s:sSplitH": {
+          "content": "AI use has outgrown the controls around it"
+        },
+        "s:sSplitEvEb": {
+          "content": "What we recommend"
+        },
+        "s:sSplitEv1": {
+          "content": "1. Name an executive owner for AI risk."
+        },
+        "s:sSplitEv2": {
+          "content": "2. Route every AI tool through one review."
+        },
+        "s:sSplitEv3": {
+          "content": "3. Inspect prompts with data loss rules.",
+          "fontSize": 36,
+          "fill": "$t:ae-fg",
+          "lineHeight": 1.3
+        },
+        "s:sSplitL": {
+          "children": [
+            {
+              "type": "text",
+              "name": "Found label",
+              "content": "What we found",
+              "textTransform": "uppercase",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": "$s:slide-eyebrow",
+              "fontWeight": "700",
+              "letterSpacing": "$t:ae-tracking-eyebrow",
+              "lineHeight": 1.2,
+              "fill": "$t:ae-eyebrow",
+              "id": "mQJkUa"
+            },
+            {
+              "id": "LSUJLu",
+              "type": "text",
+              "name": "Lede",
+              "content": "Staff in four of six departments use generative AI every week. Most of those tools never went through procurement or security review.",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 44,
+              "fontWeight": "normal",
+              "lineHeight": 1.3,
+              "fill": "$t:ae-fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            },
+            {
+              "id": "EgUZPF",
+              "type": "text",
+              "name": "Body",
+              "content": "Member data already appears in prompts, and no one at board level owns the risk. Every fix uses controls Northbridge already runs.",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 32,
+              "fontWeight": "normal",
+              "lineHeight": 1.5,
+              "fill": "$t:ae-fg-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            },
+            {
+              "type": "frame",
+              "name": "Spacer",
+              "width": 1,
+              "height": "fill_container",
+              "id": "qIbNEJ"
+            },
+            {
+              "type": "frame",
+              "name": "Programme band",
+              "width": "fill_container",
+              "gap": 40,
+              "alignItems": "center",
+              "padding": [
+                28,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "name": "Band label",
+                  "content": "Programme",
+                  "textTransform": "uppercase",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": "$s:slide-eyebrow",
+                  "fontWeight": "700",
+                  "letterSpacing": "$t:ae-tracking-eyebrow",
+                  "fill": "$t:ae-eyebrow",
+                  "id": "5fdyeH"
+                },
+                {
+                  "type": "text",
+                  "name": "Duration",
+                  "content": "12 weeks",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 28,
+                  "fontWeight": "600",
+                  "fill": "$t:ae-fg",
+                  "id": "ANm9Kt"
+                },
+                {
+                  "type": "text",
+                  "name": "Fees",
+                  "content": "Fees set at scoping",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 28,
+                  "fill": "$t:ae-fg-muted",
+                  "id": "asBRt4"
+                },
+                {
+                  "type": "text",
+                  "name": "Exclusions",
+                  "content": "No model build",
+                  "fontFamily": "$t:ae-font-body",
+                  "fontSize": 28,
+                  "fill": "$t:ae-fg-muted",
+                  "id": "bRDmGX"
+                }
+              ],
+              "id": "q4TK3b",
+              "stroke": {
+                "fill": "$t:ae-rule-strong",
+                "thickness": {
+                  "top": 1
+                },
+                "align": "inner"
+              }
+            }
+          ],
+          "height": "fill_container"
+        }
+      }
+    },
+    {
+      "id": "n3",
+      "type": "ref",
+      "ref": "s:sImage",
+      "name": "Context",
+      "x": 0,
+      "y": 1180,
+      "descendants": {
+        "s:sImg": {
+          "fill": {
+            "type": "image",
+            "url": "aerender:analystengine/assets/data-centre-roof.jpg",
+            "mode": "fill"
+          }
+        },
+        "s:sImgH": {
+          "content": "AI arrived through everyday tools"
+        },
+        "s:sImgB": {
+          "content": "Most use came through browser extensions and AI features switched on in software Northbridge already licenses."
+        },
+        "s:sImgB2": {
+          "content": "Proxy logs from September show 14 tools in regular use."
+        },
+        "s:sImgCredit": {
+          "content": "Photo: Wikimedia Commons, CC0"
+        }
+      }
+    },
+    {
+      "id": "n4",
+      "type": "ref",
+      "ref": "s:sThree",
+      "name": "Findings",
+      "x": 2020,
+      "y": 1180,
+      "descendants": {
+        "s:sThreeEb": {
+          "content": "Key findings"
+        },
+        "s:sThreeH": {
+          "content": "Three gaps leave member data exposed"
+        },
+        "s:sThreeLede": {
+          "content": "Each gap is fixable with controls Northbridge already owns."
+        },
+        "s:sCol1C": {
+          "content": "11 of 14 AI tools were never reviewed"
+        },
+        "s:sCol3B": {
+          "content": "Decisions fall between IT, data protection and risk, so none of them is made."
+        }
+      }
+    },
+    {
+      "id": "n6",
+      "type": "ref",
+      "ref": "s:sDiagram",
+      "name": "Proposed review",
+      "x": 2020,
+      "y": 2360,
+      "descendants": {
+        "s:sDiagramEb": {
+          "content": "Proposed process"
+        },
+        "s:sDiagramH": {
+          "content": "How an AI tool request should be reviewed"
+        },
+        "s:sDiagCanvas": {
+          "children": [
+            {
+              "id": "fReq",
+              "type": "ref",
+              "ref": "s:dTerminator",
+              "name": "Request",
+              "x": 0,
+              "y": 316,
+              "descendants": {
+                "dTerminatorL": {
+                  "content": "Staff request"
+                }
+              },
+              "width": 220,
+              "height": 88
+            },
+            {
+              "id": "fTri",
+              "type": "ref",
+              "ref": "s:dProcess",
+              "name": "Triage",
+              "x": 290,
+              "y": 300,
+              "descendants": {
+                "dProcessL": {
+                  "content": "Service desk triage"
+                }
+              },
+              "width": 280,
+              "height": 120
+            },
+            {
+              "id": "fDec",
+              "type": "ref",
+              "ref": "s:dDecision",
+              "name": "Decision",
+              "x": 650,
+              "y": 278,
+              "descendants": {
+                "dDecisionL": {
+                  "content": "Member data or model risk?"
+                }
+              },
+              "width": 250,
+              "height": 164
+            },
+            {
+              "id": "fApp",
+              "type": "ref",
+              "ref": "s:dKey",
+              "name": "Approve",
+              "x": 980,
+              "y": 110,
+              "descendants": {
+                "dKeyL": {
+                  "content": "Approve with conditions"
+                }
+              },
+              "width": 300,
+              "height": 120
+            },
+            {
+              "id": "fRej",
+              "type": "ref",
+              "ref": "s:dProcess",
+              "name": "Reject",
+              "x": 980,
+              "y": 490,
+              "descendants": {
+                "dProcessL": {
+                  "content": "Reject and offer an alternative"
+                }
+              },
+              "width": 300,
+              "height": 120
+            },
+            {
+              "id": "fMon",
+              "type": "ref",
+              "ref": "s:dProcess",
+              "name": "Monitor",
+              "x": 1364,
+              "y": 110,
+              "descendants": {
+                "dProcessL": {
+                  "content": "Monitor usage and logs"
+                }
+              },
+              "width": 300,
+              "height": 120
+            },
+            {
+              "id": "fNote",
+              "type": "ref",
+              "ref": "s:dNote",
+              "name": "Note",
+              "x": 1364,
+              "y": 494,
+              "width": 300,
+              "descendants": {
+                "dNoteT": {
+                  "content": "Security operations review approved tools every quarter, with the CISO as owner."
+                }
+              }
+            },
+            {
+              "id": "fc1",
+              "type": "connector",
+              "from": "Request",
+              "to": "Triage",
+              "route": "elbow",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 22,
+              "labelFill": "$t:ae-fg-muted",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              }
+            },
+            {
+              "id": "fc2",
+              "type": "connector",
+              "from": "Triage",
+              "to": "Decision",
+              "route": "elbow",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 22,
+              "labelFill": "$t:ae-fg-muted",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              }
+            },
+            {
+              "id": "fc3",
+              "type": "connector",
+              "from": "Decision",
+              "to": "Approve",
+              "route": "elbow",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 22,
+              "labelFill": "$t:ae-fg-muted",
+              "fromSide": "top",
+              "toSide": "left",
+              "label": "Acceptable",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              }
+            },
+            {
+              "id": "fc4",
+              "type": "connector",
+              "from": "Decision",
+              "to": "Reject",
+              "route": "elbow",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 22,
+              "labelFill": "$t:ae-fg-muted",
+              "fromSide": "bottom",
+              "toSide": "left",
+              "label": "Not acceptable",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              }
+            },
+            {
+              "id": "fc5",
+              "type": "connector",
+              "from": "Approve",
+              "to": "Monitor",
+              "route": "elbow",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 22,
+              "labelFill": "$t:ae-fg-muted",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              }
+            },
+            {
+              "id": "fc6",
+              "type": "connector",
+              "from": "Monitor",
+              "to": "Triage",
+              "route": "elbow",
+              "fontFamily": "$t:ae-font-body",
+              "fontSize": 22,
+              "labelFill": "$t:ae-fg-muted",
+              "fromSide": "top",
+              "toSide": "top",
+              "dash": "8 8",
+              "label": "Quarterly re-review",
+              "stroke": {
+                "fill": "$t:ae-fg-dim",
+                "thickness": 1.5,
+                "align": "center"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "n7",
+      "type": "ref",
+      "ref": "s:sList",
+      "name": "Recommendations",
+      "x": 0,
+      "y": 3540
+    }
+  ]
+}

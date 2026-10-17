@@ -1,0 +1,447 @@
+{
+  "aerender": 1,
+  "imports": {
+    "ui": "aerender:analystengine/ui"
+  },
+  "children": [
+    {
+      "id": "screen",
+      "type": "frame",
+      "name": "Client engagements",
+      "width": 1440,
+      "height": 900,
+      "clip": true,
+      "fill": "$t:ae-bg",
+      "children": [
+        {
+          "id": "sb",
+          "type": "ref",
+          "ref": "ui:uSidebar",
+          "name": "Sidebar",
+          "height": "fill_container",
+          "descendants": {
+            "ui:uSidebarC": {
+              "children": [
+                {
+                  "type": "ref",
+                  "ref": "ui:uNavSection",
+                  "name": "Delivery",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ui:uNavSectionL": {
+                      "content": "Delivery"
+                    }
+                  },
+                  "id": "9BYlOC"
+                },
+                {
+                  "type": "ref",
+                  "ref": "ui:uNavItem",
+                  "name": "Overview",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ui:uNavItemI": {
+                      "icon": "layout-dashboard"
+                    },
+                    "ui:uNavItemL": {
+                      "content": "Overview"
+                    }
+                  },
+                  "id": "aOkwHK"
+                },
+                {
+                  "type": "ref",
+                  "ref": "ui:uNavItemActive",
+                  "name": "Engagements",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ui:uNavItemActiveI": {
+                      "icon": "briefcase"
+                    },
+                    "ui:uNavItemActiveL": {
+                      "content": "Engagements"
+                    }
+                  },
+                  "id": "EYqj1T"
+                },
+                {
+                  "type": "ref",
+                  "ref": "ui:uNavItem",
+                  "name": "Clients",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ui:uNavItemI": {
+                      "icon": "building-2"
+                    },
+                    "ui:uNavItemL": {
+                      "content": "Clients"
+                    }
+                  },
+                  "id": "LUQyn0"
+                },
+                {
+                  "type": "ref",
+                  "ref": "ui:uNavItem",
+                  "name": "Findings",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ui:uNavItemI": {
+                      "icon": "shield-alert"
+                    },
+                    "ui:uNavItemL": {
+                      "content": "Findings"
+                    }
+                  },
+                  "id": "klur1s"
+                },
+                {
+                  "type": "ref",
+                  "ref": "ui:uNavSection",
+                  "name": "Back office",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ui:uNavSectionL": {
+                      "content": "Back office"
+                    }
+                  },
+                  "padding": [
+                    24,
+                    "$t:ae-s-3",
+                    "$t:ae-s-2",
+                    "$t:ae-s-3"
+                  ],
+                  "id": "5wd2b0"
+                },
+                {
+                  "type": "ref",
+                  "ref": "ui:uNavItem",
+                  "name": "Timesheets",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ui:uNavItemI": {
+                      "icon": "timer"
+                    },
+                    "ui:uNavItemL": {
+                      "content": "Timesheets"
+                    }
+                  },
+                  "id": "4DyLsU"
+                },
+                {
+                  "type": "ref",
+                  "ref": "ui:uNavItem",
+                  "name": "Invoices",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ui:uNavItemI": {
+                      "icon": "receipt"
+                    },
+                    "ui:uNavItemL": {
+                      "content": "Invoices"
+                    }
+                  },
+                  "id": "PsVSLF"
+                },
+                {
+                  "type": "ref",
+                  "ref": "ui:uNavItem",
+                  "name": "Reports",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ui:uNavItemI": {
+                      "icon": "file-text"
+                    },
+                    "ui:uNavItemL": {
+                      "content": "Reports"
+                    }
+                  },
+                  "id": "Azd4So"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "main",
+          "type": "frame",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "id": "tb",
+              "type": "ref",
+              "ref": "ui:uTopBar",
+              "name": "Top bar",
+              "width": "fill_container"
+            },
+            {
+              "id": "content",
+              "type": "frame",
+              "name": "Content",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": "$t:ae-s-7",
+              "padding": [
+                "$t:ae-s-6",
+                "$t:ae-s-6"
+              ],
+              "children": [
+                {
+                  "id": "ph",
+                  "type": "ref",
+                  "ref": "ui:uPageHeader",
+                  "name": "Page header",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ui:uPageHeaderD": {
+                      "content": "Live delivery across 11 security and AI advisory clients."
+                    },
+                    "ui:uPageHeaderH": {
+                      "textGrowth": "fixed-width-height",
+                      "width": 150,
+                      "height": 30
+                    }
+                  }
+                },
+                {
+                  "id": "kpis",
+                  "type": "frame",
+                  "name": "KPI row",
+                  "width": "fill_container",
+                  "gap": "$t:ae-s-5",
+                  "children": [
+                    {
+                      "type": "ref",
+                      "ref": "ui:uKpi",
+                      "name": "KPI active",
+                      "width": "fill_container",
+                      "descendants": {
+                        "ui:uKpiH": {
+                          "content": "Active engagements"
+                        },
+                        "ui:uKpiV": {
+                          "content": "14"
+                        },
+                        "ui:uKpiD": {
+                          "content": "2 more than September"
+                        }
+                      },
+                      "id": "VbNAmI"
+                    },
+                    {
+                      "type": "ref",
+                      "ref": "ui:uKpi",
+                      "name": "KPI findings",
+                      "width": 0,
+                      "descendants": {
+                        "ui:uKpiH": {
+                          "content": "Open findings"
+                        },
+                        "ui:uKpiV": {
+                          "content": "37"
+                        },
+                        "ui:uKpiD": {
+                          "content": "4 critical, 11 high"
+                        }
+                      },
+                      "id": "QGMSoe"
+                    },
+                    {
+                      "type": "ref",
+                      "ref": "ui:uKpi",
+                      "name": "KPI hours",
+                      "width": "fill_container",
+                      "descendants": {
+                        "ui:uKpiH": {
+                          "content": "Hours this month"
+                        },
+                        "ui:uKpiV": {
+                          "content": "412"
+                        },
+                        "ui:uKpiD": {
+                          "content": "79% of 520 planned"
+                        }
+                      },
+                      "id": "4OcKDS"
+                    }
+                  ]
+                },
+                {
+                  "id": "eng",
+                  "type": "frame",
+                  "name": "Due next",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$t:ae-s-3",
+                  "children": [
+                    {
+                      "id": "engh",
+                      "type": "text",
+                      "name": "Heading",
+                      "content": "Engagements due next",
+                      "textTransform": "uppercase",
+                      "fontFamily": "$t:ae-font-body",
+                      "fontSize": "$t:ae-fs-eyebrow",
+                      "fontWeight": "700",
+                      "letterSpacing": "$t:ae-tracking-eyebrow",
+                      "lineHeight": "$t:ae-lh-body",
+                      "fill": "$t:ae-eyebrow"
+                    },
+                    {
+                      "id": "tbl",
+                      "type": "ref",
+                      "ref": "ui:uTable",
+                      "name": "Table",
+                      "width": "fill_container",
+                      "children": [
+                        {
+                          "type": "ref",
+                          "ref": "ui:uTableHead",
+                          "name": "Header",
+                          "width": "fill_container",
+                          "id": "gJSYtP"
+                        },
+                        {
+                          "type": "ref",
+                          "ref": "ui:uTableRow",
+                          "name": "Row Kestrel Logistics",
+                          "width": "fill_container",
+                          "descendants": {
+                            "ui:uTrClientL": {
+                              "content": "Kestrel Logistics"
+                            },
+                            "ui:uTrTypeL": {
+                              "content": "Red team exercise"
+                            },
+                            "ui:uTrOwnerL": {
+                              "content": "Alex Morgan"
+                            },
+                            "ui:uTrDueL": {
+                              "content": "10 Oct 2026"
+                            },
+                            "ui:uTrChip": {
+                              "id": "st1",
+                              "type": "ref",
+                              "ref": "ui:uChipNegative",
+                              "name": "Status"
+                            }
+                          },
+                          "id": "NeDK4L"
+                        },
+                        {
+                          "type": "ref",
+                          "ref": "ui:uTableRow",
+                          "name": "Row Harwell Analytics",
+                          "width": "fill_container",
+                          "descendants": {
+                            "ui:uTrClientL": {
+                              "content": "Harwell Analytics"
+                            },
+                            "ui:uTrTypeL": {
+                              "content": "Penetration test"
+                            },
+                            "ui:uTrOwnerL": {
+                              "content": "Sam Patel"
+                            },
+                            "ui:uTrDueL": {
+                              "content": "24 Oct 2026"
+                            },
+                            "ui:uTrChip": {
+                              "id": "st2",
+                              "type": "ref",
+                              "ref": "ui:uChipPositive",
+                              "name": "Status"
+                            }
+                          },
+                          "id": "9PBicS"
+                        },
+                        {
+                          "type": "ref",
+                          "ref": "ui:uTableRow",
+                          "name": "Row Northbridge Building Society",
+                          "width": "fill_container",
+                          "descendants": {
+                            "ui:uTrClientL": {
+                              "content": "Northbridge Building Society"
+                            },
+                            "ui:uTrTypeL": {
+                              "content": "AI readiness"
+                            },
+                            "ui:uTrOwnerL": {
+                              "content": "Jordan Lee"
+                            },
+                            "ui:uTrDueL": {
+                              "content": "31 Oct 2026"
+                            },
+                            "ui:uTrChip": {
+                              "id": "st3",
+                              "type": "ref",
+                              "ref": "ui:uChipWarning",
+                              "name": "Status"
+                            }
+                          },
+                          "id": "Bj6mzh"
+                        },
+                        {
+                          "type": "ref",
+                          "ref": "ui:uTableRow",
+                          "name": "Row Fenwick Health Partners",
+                          "width": "fill_container",
+                          "descendants": {
+                            "ui:uTrClientL": {
+                              "content": "Fenwick Health Partners"
+                            },
+                            "ui:uTrTypeL": {
+                              "content": "Cloud security review"
+                            },
+                            "ui:uTrOwnerL": {
+                              "content": "Sam Patel"
+                            },
+                            "ui:uTrDueL": {
+                              "content": "14 Nov 2026"
+                            },
+                            "ui:uTrChip": {
+                              "id": "st4",
+                              "type": "ref",
+                              "ref": "ui:uChipInfo",
+                              "name": "Status"
+                            }
+                          },
+                          "id": "nOrkas"
+                        },
+                        {
+                          "type": "ref",
+                          "ref": "ui:uTableRow",
+                          "name": "Row Calder Legal",
+                          "width": "fill_container",
+                          "descendants": {
+                            "ui:uTrClientL": {
+                              "content": "Calder Legal"
+                            },
+                            "ui:uTrTypeL": {
+                              "content": "AI governance review"
+                            },
+                            "ui:uTrOwnerL": {
+                              "content": "Alex Morgan"
+                            },
+                            "ui:uTrDueL": {
+                              "content": "5 Dec 2026"
+                            }
+                          },
+                          "id": "Afc7vG"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

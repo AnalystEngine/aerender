@@ -1,0 +1,36 @@
+{
+  "aerender": 1,
+  "imports": {
+    "b": "aerender:example/assets"
+  },
+  "children": [
+    {
+      "id": "bw",
+      "type": "ref",
+      "ref": "b:bwSocial",
+      "name": "Social card",
+      "x": 0,
+      "y": 0,
+      "descendants": {
+        "b:bwSocialTagT": {
+          "content": "Customer update"
+        },
+        "b:bwSocialH": {
+          "content": "Your tariff changes on 1 April"
+        },
+        "b:bwSocialSub": {
+          "content": "Most households will pay less. Here is what changes and when."
+        },
+        "b:bwSocialIcon": {
+          "icon": "zap"
+        },
+        "b:bwSocialStatV": {
+          "content": "8% lower"
+        },
+        "b:bwSocialStatL": {
+          "content": "average annual bill"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "aerender": 1,
+  "children": [
+    {
+      "id": "root",
+      "type": "frame",
+      "name": "icon-stroke-width",
+      "fill": "#181818",
+      "padding": 24,
+      "gap": 16,
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "i1",
+          "type": "icon",
+          "name": "Default",
+          "icon": "shield-check",
+          "library": "lucide",
+          "width": 48,
+          "height": 48,
+          "fill": "#F7F7F7"
+        },
+        {
+          "id": "i2",
+          "type": "icon",
+          "name": "Thin",
+          "icon": "shield-check",
+          "library": "lucide",
+          "width": 48,
+          "height": 48,
+          "fill": "#F7F7F7",
+          "lineWidth": 1.5
+        }
+      ]
+    }
+  ]
+}

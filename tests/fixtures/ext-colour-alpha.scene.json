@@ -1,0 +1,47 @@
+{
+  "aerender": 1,
+  "variables": {
+    "focus": {
+      "type": "color",
+      "value": "#C9C9C9"
+    },
+    "accent": {
+      "type": "color",
+      "value": "#E6FC20"
+    }
+  },
+  "children": [
+    {
+      "id": "root",
+      "type": "frame",
+      "name": "colour-alpha",
+      "fill": "#181818",
+      "padding": 24,
+      "gap": 16,
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "b1",
+          "type": "frame",
+          "name": "Ring",
+          "width": 200,
+          "height": 40,
+          "fill": "#121212",
+          "stroke": {
+            "fill": "$focus/50%",
+            "thickness": 2,
+            "align": "outer"
+          }
+        },
+        {
+          "id": "b2",
+          "type": "frame",
+          "name": "Tint",
+          "width": 200,
+          "height": 40,
+          "fill": "$accent/0.25"
+        }
+      ]
+    }
+  ]
+}

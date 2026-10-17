@@ -1,0 +1,26 @@
+{
+  "aerender": 1,
+  "children": [
+    {
+      "id": "root",
+      "type": "frame",
+      "name": "text-transform",
+      "fill": "#181818",
+      "padding": 24,
+      "gap": 16,
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "t1",
+          "type": "text",
+          "name": "Upper",
+          "content": "typed in lower case",
+          "textTransform": "uppercase",
+          "fontFamily": "Inter Tight",
+          "fontSize": 16,
+          "fill": "#F7F7F7"
+        }
+      ]
+    }
+  ]
+}
