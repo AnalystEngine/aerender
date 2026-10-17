@@ -122,6 +122,6 @@ Place shapes on a `layout:"none"` frame with `x`/`y`, or in a flex row. Join the
 
 ## Images
 
-Image urls are relative to the file that contains the node, or `aerender:<brand>/<path>` for an image shipped with a bundled brand kit (for example `aerender:analystengine/assets/data-centre-roof.jpg`).
+Image urls are relative to the file that contains the node, or `aerender:<brand>/<path>` for an image in a brand folder (for example `aerender:analystengine/assets/data-centre-roof.jpg`).
 
 `asset add <url-or-path> --scene file.scene.json` downloads the image (falling back to curl, which uses the system certificate store), checks it is a real image, and saves it in `assets/` beside the scene. It prints the url to use, and `--credit` records attribution in `assets/CREDITS.txt`. A remote `https://` url also works at render time when the server returns an image, but local assets are deterministic.

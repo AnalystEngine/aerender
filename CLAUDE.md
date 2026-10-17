@@ -7,7 +7,7 @@ Guidance for agents working on this repository. Agents that only use aerender sh
 aerender is a compiler, not a layout engine. Every command follows the same pipeline:
 
 1. **Load** (`src/doc.ts`): read a `*.scene.json` or `*.lib.json` file (`"aerender": 1` required) and its imports.
-   - `aerender:<brand>/<library>` resolves to `brands/<brand>/<library>.lib.json` in the package.
+   - `aerender:<brand>/<library>` resolves to `<library>.lib.json` in a discovered brand folder (see Brand discovery).
    - Library ids, refs and variables get their import prefix (`ui:uKpi`, `$t:ae-fg`).
    - Normalising turns the stroke object into the flat fields the compiler reads.
    - Edits always mutate the raw JSON, never the normalised copy.
@@ -22,6 +22,17 @@ aerender is a compiler, not a layout engine. Every command follows the same pipe
    - After load, the page waits for fonts and images, rounds text boxes to whole pixels, and runs the connector router (`src/connectors.ts`, shipped as a string so exported HTML draws connectors too).
    - It then screenshots, prints PDF, or measures the page for lint.
 
+## Brand discovery
+
+`src/brands.ts` finds brand folders, and every `aerender:` alias goes through it: imports and file arguments (`resolveImport` in `src/doc.ts`), image urls (`src/compile.ts`), `lint --brand` (`src/lint.ts`), and the `brands`, `brand`, `libs` and `doctor` commands.
+
+- Sources, in order: each colon-separated `AERENDER_BRANDS` entry, then the package's `brands/`. `${VAR}` and `$VAR` are expanded in code because the operator may set the variable unexpanded; an entry naming an unset variable is dropped. `*` matches directory names in any segment, and matches are sorted.
+- Missing directories are skipped silently, so aerender works when a private brands directory is absent.
+- Each subfolder whose name is a valid id (lowercase letters, digits, hyphens) is a brand; `_` and `.` folders are templates and ignored. The first source to define an id wins; later ones are recorded as shadowed and noted by `aerender brands`.
+- `GUIDE.md` gives the display name (first line) and description (first paragraph). A folder without `GUIDE.md` or `tokens.lib.json` is still listed, with a warning on stderr.
+- `lint --brand` takes a bare id, `aerender:<id>` or a file. A brand's palette is every hex colour in its `tokens.css` and `tokens.lib.json`.
+- The folder contract is documented in `README.md` and `skills/aerender/references/new-design-system.md`; other tools build brand folders against it, so change it only deliberately.
+
 Where things live:
 - CLI and the render and deck pipeline: `src/cli.ts`
 - Addressing by name path: `src/address.ts`
@@ -29,6 +40,7 @@ Where things live:
 - Schema checks: `src/validate.ts`
 - Layout lint: `src/lint.ts`
 - Outline: `src/tree.ts`
+- Brand discovery: `src/brands.ts`
 - Hand-off: `src/export.ts`
 - Tokens import: `src/tokens.ts`
 - Assets: `src/asset.ts`
@@ -36,7 +48,7 @@ Where things live:
 - Fonts and icons: `src/assets.ts`
 
 Repository layout:
-- `brands/<brand>/`: brand kits (`tokens.css`, `*.lib.json`, `assets/`, `README.md`).
+- `brands/<brand>/`: built-in brands (`GUIDE.md`, `tokens.css`, `*.lib.json`, `components.md`, `assets/`).
 - `scripts/build-*.py`: generators for the brand libraries.
 - `examples/`: one scene per visual type.
 - `skills/`: the agent skills.
@@ -62,8 +74,14 @@ Prefer integration tests that render a fixture and measure the page over unit te
 
 ## Rules
 
-- **Keep the skills in step with the CLI.** A change to a command, flag, property, library, component id or error message that agents rely on updates `skills/aerender/` or `skills/analystengine-brand/` in the same commit. Keep each `SKILL.md` under about 8 KB; move detail to `references/`.
+- **Keep the skills in step with the CLI.** A change to a command, flag, property, library, component id or error message that agents rely on updates `skills/aerender/` and the affected `brands/*/GUIDE.md` or `components.md` in the same commit. Keep each `SKILL.md` under about 8 KB; move detail to `references/`.
 - **Brand libraries are generated.** To change one, edit its `scripts/build-*.py`, empty the library file, apply the script's ops with `aerender batch`, and render the library to check every template. Keep component ids stable: example scenes and users' scenes reference them.
+  ```
+  python3 scripts/build-ui-lib.py > ops.json
+  echo '{"aerender":1,"imports":{"t":"tokens.lib.json"},"variables":{},"children":[]}' > brands/analystengine/ui.lib.json
+  aerender batch brands/analystengine/ui.lib.json ops.json
+  ```
+- **Only built-in brands live in this repository.** Private and client brands belong in directories listed in `AERENDER_BRANDS`.
 - **Use only fictional people, companies and contact details** in examples, fixtures, libraries and docs. Use images you can redistribute (CC0 or your own) and record each in the folder's `CREDITS.txt`.
 - **Never use absolute paths** in code, libraries, fixtures or docs. Resolve package files from `PKG_ROOT` and user files from the scene's directory.
 - Write UK English, and write documentation and comments as current fact.

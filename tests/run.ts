@@ -1,5 +1,5 @@
 // Integration tests: render real fixtures, run the CLI, measure the DOM. Run with `npm test`.
-import { execFileSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -15,13 +15,12 @@ const TMP = fs.mkdtempSync(path.join(os.tmpdir(), "aerender-test-"));
 const BASELINES = path.join(ROOT, "tests/baselines");
 let failed = 0;
 
-function cli(...args: string[]): { code: number; out: string } {
-  try {
-    return { code: 0, out: execFileSync(BIN, args, { encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }) };
-  } catch (e: any) {
-    return { code: e.status ?? 1, out: (e.stdout ?? "") + (e.stderr ?? "") };
-  }
+/** Run the CLI with no external brands unless `env` adds some; `out` holds stdout then stderr. */
+function cliEnv(env: Record<string, string>, ...args: string[]): { code: number; out: string; stdout: string } {
+  const r = spawnSync(BIN, args, { encoding: "utf8", env: { ...process.env, AERENDER_BRANDS: "", ...env } });
+  return { code: r.status ?? 1, out: r.stdout + r.stderr, stdout: r.stdout };
 }
+const cli = (...args: string[]) => cliEnv({}, ...args);
 async function test(name: string, fn: () => void | Promise<void>) {
   try { await fn(); console.log(`ok   ${name}`); } catch (e: any) { failed++; console.log(`FAIL ${name}\n     ${e.message}`); }
 }
@@ -250,7 +249,58 @@ await test("bundled libraries resolve by alias from any directory", () => {
   assert(/#dProcess/.test(cli("tree", "aerender:analystengine/slides", "--depth", "1").out), "alias as file argument");
   const libs = cli("libs").out;
   assert(/aerender:analystengine\/ui/.test(libs) && /aerender:example\/tokens/.test(libs), "libs listing");
-  assert(/no bundled library "aerender:nope\/x"/.test(cli("tree", "aerender:nope/x").out), "unknown alias message");
+  assert(/no library "aerender:nope\/x"\. Available: .*aerender:example\/assets/.test(cli("tree", "aerender:nope/x").out), "unknown alias message");
+});
+
+await test("brands: discovery through AERENDER_BRANDS, shadowing, aliases, render and lint", () => {
+  const ws = path.join(TMP, "ws-test");
+  const team = path.join(ws, "team", "brands"), more = path.join(TMP, "more-a", "brands");
+  // "acme": an external brand copied from the example brand, with tokens.lib.json only.
+  const acme = path.join(team, "acme");
+  fs.mkdirSync(path.join(acme, "assets"), { recursive: true });
+  for (const f of ["tokens.lib.json", "assets.lib.json"]) fs.copyFileSync(path.join(ROOT, "brands/example", f), path.join(acme, f));
+  fs.copyFileSync(path.join(ROOT, "brands/analystengine/assets/data-centre-roof.jpg"), path.join(acme, "assets/roof.jpg"));
+  fs.writeFileSync(path.join(acme, "GUIDE.md"), "# Acme Test\n\nA test brand\nfor discovery.\n\n## Rules\n\n- One accent.\n");
+  fs.writeFileSync(path.join(acme, "components.md"), "# Acme components\n");
+  // "example" shadows the built-in brand; "broken" breaks the contract; "_template" is ignored.
+  fs.mkdirSync(path.join(team, "example"), { recursive: true });
+  fs.writeFileSync(path.join(team, "example", "GUIDE.md"), "# Shadow example\n\nShadows the built-in.\n");
+  fs.copyFileSync(path.join(ROOT, "brands/example/tokens.lib.json"), path.join(team, "example", "tokens.lib.json"));
+  fs.mkdirSync(path.join(team, "_template"), { recursive: true });
+  fs.mkdirSync(path.join(more, "broken"), { recursive: true });
+  const env = { AERENDER_TEST_WS: ws, AERENDER_BRANDS: `\${AERENDER_TEST_WS}/team/brands:${path.join(TMP, "missing")}:${path.join(TMP, "more-*", "brands")}:$AERENDER_UNSET_VAR/x` };
+
+  const list = cliEnv(env, "brands");
+  assert(list.code === 0, list.out);
+  assert(/^acme\s+Acme Test\s+A test brand for discovery\.\s+\[.*team\/brands\]$/m.test(list.out), `acme line: ${list.out}`);
+  assert(/^example\s+Shadow example\s.*team\/brands\]$/m.test(list.out), "the first source wins");
+  assert(/note: example in built-in is shadowed by .*team\/brands/.test(list.out), "shadow note");
+  assert(/^broken\s.*more-a\/brands\]$/m.test(list.out) && /warning: brand "broken" has no GUIDE\.md/.test(list.out) && /"broken" has no tokens\.lib\.json/.test(list.out), "glob source and contract warnings");
+  assert(!/_template/.test(list.out) && /^analystengine\s.*\[built-in\]$/m.test(list.out), "templates ignored, built-ins listed");
+  const json = JSON.parse(cliEnv(env, "brands", "--json").stdout);
+  assert(json.brands.find((b: any) => b.id === "acme").source === team && json.shadowed[0].source === "built-in", "json");
+
+  assert(cliEnv(env, "brand", "acme").stdout.startsWith("# Acme Test"), "brand prints GUIDE.md");
+  assert(/^# Acme components/.test(cliEnv(env, "brand", "aerender:acme", "--components").stdout), "brand --components");
+  assert(cliEnv(env, "brand", "acme", "--path").stdout.trim() === acme, "brand --path");
+  const unknown = cliEnv(env, "brand", "nope");
+  assert(unknown.code === 1 && /no brand "nope"\. Available: .*acme/.test(unknown.out), unknown.out);
+  assert(/aerender:acme\/assets/.test(cliEnv(env, "libs").out), "libs lists external brands");
+
+  const scene = path.join(TMP, "acme.scene.json");
+  fs.writeFileSync(scene, JSON.stringify({ aerender: 1, imports: { t: "aerender:acme/tokens", a: "aerender:acme/assets" }, children: [
+    { id: "p", type: "frame", name: "Panel", width: 400, height: 200, fill: "$t:bw-bg", padding: 24, gap: 12, children: [
+      { id: "h", type: "text", name: "Head", content: "Hello", fill: "$t:bw-ink", fontSize: 32 },
+      { id: "i", type: "frame", name: "Photo", width: 120, height: 80, fill: { type: "image", url: "aerender:acme/assets/roof.jpg", mode: "fill" } }] }] }));
+  const r = cliEnv(env, "render", scene, "--scale", "1", "--out", path.join(TMP, "acme-out"));
+  assert(r.code === 0 && pngSize(path.join(TMP, "acme-out", "panel.png")).join() === "400,200", r.out);
+  for (const b of ["acme", "aerender:acme"]) {
+    const l = cliEnv(env, "lint", scene, "--brand", b);
+    assert(l.code === 0, `lint --brand ${b}: ${l.out}`);
+  }
+  fs.writeFileSync(scene, fs.readFileSync(scene, "utf8").replace('"$t:bw-bg"', '"#123456"'));
+  assert(/#123456 is not in acme/.test(cliEnv(env, "lint", scene, "--brand", "acme").out), "off-palette against tokens.lib.json");
+  assert(/no library "aerender:acme\/tokens"/.test(cli("validate", scene).out), "without AERENDER_BRANDS the brand is absent");
 });
 
 await test("loader accepts only aerender scene and library files", () => {

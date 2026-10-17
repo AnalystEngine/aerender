@@ -4,7 +4,8 @@ import os from "node:os";
 import path from "node:path";
 import { findChrome, CHROME_FIX } from "./chrome.js";
 import { knownFonts, lucideNames, fontFaceCss } from "./assets.js";
-import { PKG_ROOT, load, buildScene, bundledLibraries } from "./doc.js";
+import { PKG_ROOT, load, buildScene } from "./doc.js";
+import { brandLibraries } from "./brands.js";
 import { expandAll, Problems } from "./resolve.js";
 import { Compiler } from "./compile.js";
 import { withPage, screenshotNodes } from "./browser.js";
@@ -27,7 +28,7 @@ export async function doctor(version: string): Promise<{ ok: boolean; text: stri
   let icons = 0;
   try { icons = lucideNames().length; } catch { /* reported below */ }
   check(icons > 1000, "Icons", `${icons} lucide icons`, "reinstall aerender; lucide-static is missing");
-  const libs = bundledLibraries();
+  const libs = brandLibraries();
   check(libs.length > 0, "Libraries", libs.map((l) => l.alias).join(", ") || "none", "reinstall aerender; brands/ is missing");
 
   if (chrome) {

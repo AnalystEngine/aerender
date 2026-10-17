@@ -15,7 +15,8 @@ import { tokensImport } from "./tokens.js";
 import { exportHtml, exportSpec } from "./export.js";
 import { assetAdd } from "./asset.js";
 import { doctor } from "./doctor.js";
-import { PKG_ROOT, bundledLibraries } from "./doc.js";
+import { PKG_ROOT } from "./doc.js";
+import { BUILT_IN, Brand, brandLibraries, discoverBrands, findBrand } from "./brands.js";
 
 const VERSION: string = JSON.parse(fs.readFileSync(path.join(PKG_ROOT, "package.json"), "utf8")).version;
 
@@ -40,6 +41,8 @@ function printProblems(p: Problems, quiet = false) {
 
 const USAGE = `aerender <command> ...
   --version | doctor | libs
+  brands [--json]
+  brand <id> [--components | --path]
   render <file> [--node X]... [--out dir] [--scale 2] [--format png|pdf] [--deck]
   tree <file> [--node X] [--depth N] [--all] [--ids]
   get <file> <path>
@@ -50,7 +53,7 @@ const USAGE = `aerender <command> ...
   copy <file> <path> <new-parent> [--name X] [--index n]
   batch <file> <ops.json | ->
   validate <file>
-  lint <file> [--node X] [--brand tokens.css]
+  lint <file> [--node X] [--brand <id> | tokens.css]
   asset add <url-or-path> [--scene file.scene.json] [--name x] [--credit text]
   tokens import <tokens.css> --out <name.lib.json>
   export html <file> --node X --out f.html
@@ -137,6 +140,40 @@ async function render(a: Args) {
   });
 }
 
+const warnBrand = (b: Brand) => b.warnings.forEach((w) => console.error(`warning: ${w}`));
+
+function brands(a: Args) {
+  const d = discoverBrands();
+  if (flag(a, "json")) {
+    const row = (b: Brand) => ({ id: b.id, name: b.name, description: b.description, source: b.source, path: b.dir, warnings: b.warnings });
+    return console.log(JSON.stringify({ brands: d.brands.map(row), shadowed: d.shadowed.map(row), skipped: d.skipped }, null, 2));
+  }
+  const w = Math.max(...d.brands.map((b) => b.id.length), 2);
+  const n = Math.max(...d.brands.map((b) => b.name.length), 4);
+  for (const b of d.brands) console.log(`${b.id.padEnd(w)}  ${b.name.padEnd(n)}  ${b.description || "(no description)"}  [${b.source}]`);
+  for (const b of d.shadowed) {
+    const winner = d.brands.find((x) => x.id === b.id)!;
+    console.log(`note: ${b.id} in ${b.source} is shadowed by ${winner.source === BUILT_IN ? "the built-in brand" : winner.source}`);
+  }
+  for (const f of d.skipped) console.error(`warning: ${f} skipped: a brand folder name uses lowercase letters, digits and hyphens`);
+  [...d.brands, ...d.shadowed].forEach(warnBrand);
+  console.log("Read a brand's guide: aerender brand <id>");
+}
+
+function brand(a: Args) {
+  if (!a._[1]) throw new Error("usage: brand <id> [--components | --path]. List brands with: aerender brands");
+  const b = findBrand(a._[1]);
+  warnBrand(b);
+  for (const s of discoverBrands().shadowed.filter((x) => x.id === b.id)) console.error(`note: this brand shadows ${s.dir}`);
+  if (flag(a, "path")) return console.log(b.dir);
+  const file = path.join(b.dir, flag(a, "components") ? "components.md" : "GUIDE.md");
+  if (!fs.existsSync(file)) {
+    if (flag(a, "components")) throw new Error(`brand "${b.id}" has no components.md. List its components with: aerender tree aerender:${b.id}/<library> --depth 1`);
+    return;
+  }
+  process.stdout.write(fs.readFileSync(file, "utf8"));
+}
+
 async function main() {
   const a = parseArgs(process.argv.slice(2));
   const cmd = a._[0];
@@ -170,8 +207,10 @@ async function main() {
         console.log(r.text);
         process.exit(r.ok ? 0 : 1);
       }
+      case "brands": return brands(a);
+      case "brand": return brand(a);
       case "libs": {
-        const lines = bundledLibraries().map((l) => {
+        const lines = brandLibraries().map((l) => {
           const raw = JSON.parse(fs.readFileSync(l.file, "utf8"));
           let comps = 0;
           const walk = (n: any) => { if (n.reusable) comps++; (n.children ?? []).forEach(walk); };

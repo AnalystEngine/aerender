@@ -2,31 +2,21 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { brandLibraries } from "./brands.js";
 
-/** Root of the installed package; bundled brand kits live in its brands/ folder. */
+/** Root of the installed package; built-in brands live in its brands/ folder. */
 export const PKG_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 export const LIB_ALIAS = "aerender:";
 export const SCENE_EXT = ".scene.json";
 export const LIB_EXT = ".lib.json";
 export const SCHEMA = 1;
 
-/** Every bundled library as its alias, e.g. "aerender:analystengine/ui". */
-export function bundledLibraries(): { alias: string; file: string }[] {
-  const root = path.join(PKG_ROOT, "brands");
-  if (!fs.existsSync(root)) return [];
-  return fs.readdirSync(root).sort().flatMap((brand) => {
-    const dir = path.join(root, brand);
-    if (!fs.statSync(dir).isDirectory()) return [];
-    return fs.readdirSync(dir).filter((f) => f.endsWith(LIB_EXT)).sort()
-      .map((f) => ({ alias: `${LIB_ALIAS}${brand}/${f.slice(0, -LIB_EXT.length)}`, file: path.join(dir, f) }));
-  });
-}
-
-/** Resolve an import: "aerender:<brand>/<name>" is a bundled library; anything else is relative to the importing file. */
+/** Resolve an import: "aerender:<brand>/<name>" is a library of a discovered brand; anything else is relative to the importing file. */
 export function resolveImport(rel: string, from: string): string {
   if (rel.startsWith(LIB_ALIAS)) {
-    const hit = bundledLibraries().find((l) => l.alias === rel);
-    if (!hit) throw new Error(`no bundled library "${rel}". Bundled: ${bundledLibraries().map((l) => l.alias).join(", ")}`);
+    const libs = brandLibraries();
+    const hit = libs.find((l) => l.alias === rel);
+    if (!hit) throw new Error(`no library "${rel}". Available: ${libs.map((l) => l.alias).join(", ")}. Run: aerender libs`);
     return hit.file;
   }
   const f = path.resolve(path.dirname(from), rel);

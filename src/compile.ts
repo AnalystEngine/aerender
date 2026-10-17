@@ -1,7 +1,8 @@
 // Compiles an expanded scene into HTML/CSS. Flexbox does the layout; variables become CSS custom properties.
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { Scene, LIB_ALIAS, PKG_ROOT } from "./doc.js";
+import { Scene, LIB_ALIAS } from "./doc.js";
+import { brandFile } from "./brands.js";
 import { RNode, Problems, parseVarRef, resolveVar, resolveValue, defaultTheme, pickValue } from "./resolve.js";
 import { fontFaceCss, lucideInner, FALLBACK_STACK, IconError } from "./assets.js";
 import { CONNECTOR_SCRIPT } from "./connectors.js";
@@ -107,6 +108,10 @@ export class Compiler {
     return typeof r === "boolean" ? r : undefined;
   }
 
+  private brandUrl(alias: string, node: RNode): string {
+    try { return pathToFileURL(brandFile(alias)).href; } catch (e: any) { this.probs.err(e.message, node.id); return alias; }
+  }
+
   /** CSS background layers for a fill (top layer first). */
   background(fill: any, node: RNode, theme: Theme): Record<string, string> {
     const arr = (Array.isArray(fill) ? fill : [fill]).filter((f) => f != null && !(typeof f === "object" && this.bool(f.enabled, theme) === false));
@@ -117,9 +122,9 @@ export class Compiler {
         const c = this.color(f, node);
         if (c) { layers.push(`linear-gradient(${c}, ${c})`); single = c; }
       } else if (f.type === "image" && f.url) {
-        // "aerender:<brand>/<path>" is an image shipped with a bundled brand kit.
+        // "aerender:<brand>/<path>" is a file inside a discovered brand folder.
         const url = /^(https?|data):/.test(f.url) ? f.url
-          : f.url.startsWith(LIB_ALIAS) ? pathToFileURL(path.join(PKG_ROOT, "brands", f.url.slice(LIB_ALIAS.length))).href
+          : f.url.startsWith(LIB_ALIAS) ? this.brandUrl(f.url, node)
           : this.opts.mode === "export" ? f.url : pathToFileURL(path.resolve(this.sc.baseDir, f.url)).href;
         const mode = ({ fill: "cover", fit: "contain" } as Record<string, string>)[f.mode] ?? f.mode ?? "cover";
         layers.push(`url("${url}") center / ${mode === "stretch" ? "100% 100%" : mode} no-repeat`);

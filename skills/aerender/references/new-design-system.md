@@ -1,6 +1,8 @@
-# Building a brand kit for a new design system
+# Building a brand for a new design system
 
-Use this when a client's brand is not bundled. You end with a folder of libraries that any scene can import, and a `tokens.css` that `lint --brand` checks against. The worked example is `brands/example/` in the aerender repository: Brightwater, a fictional energy company.
+Use this when `aerender brands` does not list the brand you need. You end with a brand folder that aerender discovers: a guide, tokens, libraries that any scene imports as `aerender:<id>/<library>`, and a palette that `lint --brand <id>` checks against. The worked example is `aerender brand example --path`: Brightwater, a fictional energy company.
+
+Work in a folder named after the brand id (lowercase letters, digits and hyphens), shown here as `acme/`.
 
 ## 1. Collect the brand's tokens as CSS
 
@@ -30,7 +32,7 @@ Hex and `rgba()` become colour variables, px and unitless numbers become number 
 ## 2. Import the tokens
 
 ```
-aerender tokens import brand/tokens.css --out brand/tokens.lib.json
+aerender tokens import acme/tokens.css --out acme/tokens.lib.json
 ```
 
 The command prints how each awkward value was handled. Check the fonts: aerender bundles Inter Tight, Inter, JetBrains Mono and Noto Sans, and other families fall back through the stack. Pick the closest bundled family first in the stack for faithful renders.
@@ -40,8 +42,8 @@ The command prints how each awkward value was handled. Check the fonts: aerender
 Create one library per job, each importing the tokens as `t` and binding every colour, size and font to a variable:
 
 ```
-echo '{"aerender":1,"imports":{"t":"tokens.lib.json"},"variables":{},"children":[]}' > brand/assets.lib.json
-aerender batch brand/assets.lib.json ops.json
+echo '{"aerender":1,"imports":{"t":"tokens.lib.json"},"variables":{},"children":[]}' > acme/assets.lib.json
+aerender batch acme/assets.lib.json ops.json
 ```
 
 - **assets**: templates for the graphics the client publishes (social card, square post, report cover, one-pager, web hero).
@@ -59,19 +61,57 @@ Rules that keep a kit usable:
 ## 4. Check it
 
 ```
-aerender validate brand/assets.lib.json
-aerender lint brand/assets.lib.json --brand brand/tokens.css
-aerender render brand/assets.lib.json --out renders
+aerender validate acme/assets.lib.json
+aerender lint acme/assets.lib.json --brand acme/tokens.css
+aerender render acme/assets.lib.json --out renders
 ```
 
 Look at every template at full size. Then write one example scene that imports the library by relative path and changes the copy, to prove the overrides work:
 
 ```json
-{ "aerender": 1, "imports": { "b": "./brand/assets.lib.json" },
+{ "aerender": 1, "imports": { "b": "./acme/assets.lib.json" },
   "children": [ { "id": "post", "type": "ref", "ref": "b:bwSocial", "name": "Post",
                   "descendants": { "b:bwSocialH": { "content": "Your tariff changes on 1 April" } } } ] }
 ```
 
-## 5. Record the brand rules
+## 5. Write the guide
 
-Write a short README beside the libraries: the palette and when to use the accent, type rules, imagery treatment, voice, and anything agents get wrong. Brand rules that tokens cannot express (one accent per visual, sentence case, photo style) belong there.
+Write `GUIDE.md` beside the libraries. `aerender brands` shows its title and first paragraph, and `aerender brand <id>` prints it whole:
+
+```markdown
+# Acme
+
+One line saying what the brand looks like and what it is for.
+
+## Which library for which asset
+## Non-negotiable rules
+## Voice
+## Before you deliver
+```
+
+Cover the palette and when to use the accent, type rules, imagery treatment, voice, a pre-delivery checklist, and anything agents get wrong. Brand rules that tokens cannot express (one accent per visual, sentence case, photo style) belong here. For a large kit, list component ids and override keys in `components.md`.
+
+## 6. Add it as a brand
+
+Never commit a private brand to the aerender repository. Put the folder in a private brands directory and list that directory in `AERENDER_BRANDS` (colon-separated; `$VAR` and `*` are expanded):
+
+```
+brands/                 the directory listed in AERENDER_BRANDS, e.g. AERENDER_BRANDS=$HOME/brands
+  acme/                 folder name = brand id
+    GUIDE.md            required: "# <Display name>", a one-line description, then the guide
+    tokens.lib.json     required: aerender tokens import tokens.css --out tokens.lib.json
+    tokens.css          optional: the token source
+    ui.lib.json, slides.lib.json, assets.lib.json   optional
+    components.md       optional component catalogue
+    assets/             optional images, used as aerender:acme/assets/<file>
+```
+
+Inside the folder, libraries import each other by relative path (`"t": "tokens.lib.json"`) and image urls are relative to the library (`./assets/photo.jpg`). Folders starting with `_` or `.` are ignored, so keep a template as `_template/`. Earlier directories in `AERENDER_BRANDS` win over later ones and over the built-in brands.
+
+Check that aerender finds it:
+
+```
+aerender brands                 # acme is listed, with no warnings
+aerender brand acme | head -5
+aerender lint <scene>.scene.json --brand acme
+```
