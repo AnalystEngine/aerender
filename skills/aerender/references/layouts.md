@@ -68,6 +68,6 @@ Draw a cross-cutting concern (governance, change control) as a lane or a dashed 
 
 ## Before you hand over
 
-- `aerender validate` and `aerender lint --brand <tokens.css>` are clean.
+- `aerender validate` and `aerender lint --brand <id>` are clean.
 - Every visual has been rendered and looked at full size.
 - `aerender export spec` gives the build agent the content and tokens.
