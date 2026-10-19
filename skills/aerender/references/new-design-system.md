@@ -102,11 +102,25 @@ brands/                 the directory listed in AERENDER_BRANDS, e.g. AERENDER_B
     tokens.lib.json     required: aerender tokens import tokens.css --out tokens.lib.json
     tokens.css          optional: the token source
     ui.lib.json, slides.lib.json, assets.lib.json   optional
-    components.md       optional component catalogue
+    components.md       optional component catalogue, printed by aerender brand acme --components
     assets/             optional images, used as aerender:acme/assets/<file>
 ```
 
-Inside the folder, libraries import each other by relative path (`"t": "tokens.lib.json"`) and image urls are relative to the library (`./assets/photo.jpg`). Folders starting with `_` or `.` are ignored, so keep a template as `_template/`. Earlier directories in `AERENDER_BRANDS` win over later ones and over the built-in brands.
+Other tools build brand folders to this layout, so it changes only deliberately.
+
+Inside the folder, libraries import each other by relative path (`"t": "tokens.lib.json"`) and image urls are relative to the library (`./assets/photo.jpg`). Folders starting with `_` or `.` are ignored, so keep a template as `_template/`. `aerender brands` still lists a folder that has no `GUIDE.md` or `tokens.lib.json`, with a warning.
+
+How aerender reads `AERENDER_BRANDS`:
+- It expands `$VAR` and `${VAR}` itself, so the variable works even when set unexpanded, and skips an entry that names an unset variable.
+- `*` matches directory names, in any part of the path.
+- It searches each entry in order, then the built-in brands, and skips directories that do not exist.
+- When two directories hold the same brand id, the first wins and `aerender brands` notes the one it hides.
+
+For example:
+
+```
+export AERENDER_BRANDS='$HOME/brands:$HOME/clients/*/brands'
+```
 
 Check that aerender finds it:
 

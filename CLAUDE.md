@@ -31,7 +31,7 @@ aerender is a compiler, not a layout engine. Every command follows the same pipe
 - Each subfolder whose name is a valid id (lowercase letters, digits, hyphens) is a brand; `_` and `.` folders are templates and ignored. The first source to define an id wins; later ones are recorded as shadowed and noted by `aerender brands`.
 - `GUIDE.md` gives the display name (first line) and description (first paragraph). A folder without `GUIDE.md` or `tokens.lib.json` is still listed, with a warning on stderr.
 - `lint --brand` takes a bare id, `aerender:<id>` or a file. A brand's palette is every hex colour in its `tokens.css` and `tokens.lib.json`.
-- The folder contract is documented in `README.md` and `skills/aerender/references/new-design-system.md`; other tools build brand folders against it, so change it only deliberately.
+- The folder contract is documented in `skills/aerender/references/new-design-system.md`; other tools build brand folders against it, so change it only deliberately.
 
 Where things live:
 - CLI and the render and deck pipeline: `src/cli.ts`
