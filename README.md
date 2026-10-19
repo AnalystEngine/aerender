@@ -2,11 +2,41 @@
 
 Mock up any visual from a JSON scene, so you can agree it before you build it.
 
-aerender is a command-line tool for AI agents and the people they work with. An agent describes a screen, a dashboard, a social graphic, an A4 page, a flow diagram or a slide deck as a small JSON scene, and aerender renders it to PNG or PDF. Both sides look at the same picture, ask for changes in plain words, and the agent applies them with one or two commands. Only once the visual is agreed does anyone write front-end code or build the real deck.
+aerender is a command-line tool for AI agents and the people they work with. An agent describes a screen, a dashboard, a social graphic, an A4 page, a flow diagram or a slide deck as a small JSON scene, and aerender renders it to PNG or PDF. You look at the picture and ask for changes in plain words, and the agent makes each change with one or two commands of a few hundred characters. Front-end code or the real deck is built only once the mockup is agreed, so revisions happen while they are still cheap.
 
-## The problem
+![Dashboard mocked up with the AnalystEngine UI library](docs/images/dashboard.jpg)
 
-Agents go straight to building. They write the React page or generate the PowerPoint file, and only then does anyone see it. Revising a built front end or deck is slow and expensive: the agent rereads large files, rewrites code or slides, and often breaks something else. There is no cheap, shared visual draft to agree first.
+## Install
+
+You need Node 22 or later and Chrome or Chromium.
+
+```
+npm install -g github:AnalystEngine/aerender
+aerender doctor
+```
+
+`doctor` checks Node, Chrome, fonts, icons and the brand libraries, renders a test scene, and prints a fix for anything missing. aerender looks for Chrome in `AERENDER_CHROME` first, then on the `PATH` (`google-chrome`, `google-chrome-stable`, `chromium`, `chromium-browser`, `chrome`), then in a Playwright install (`npx playwright install chromium`).
+
+Then install the skill, which teaches your agent the workflow:
+
+```
+npx skills add AnalystEngine/aerender
+```
+
+Or copy `skills/aerender/` into a project's `.claude/skills/`. If the CLI is missing, the skill's setup step installs it.
+
+## Quick start
+
+```
+echo '{"aerender":1,"imports":{"a":"aerender:analystengine/assets"},"children":[]}' > post.scene.json
+aerender insert post.scene.json / '{"type":"ref","ref":"a:aSocial","name":"Card"}'
+aerender set post.scene.json "Card/Headline" content="Review AI tools before staff adopt them"
+aerender tree post.scene.json
+aerender render post.scene.json                       # writes renders/card@2x.png
+aerender lint post.scene.json --brand analystengine
+```
+
+This creates a scene that imports the AnalystEngine marketing templates, places a social card, changes its headline, prints an outline, renders the card and checks it against the brand.
 
 ## How it works
 
@@ -18,27 +48,43 @@ Agents go straight to building. They write the React page or generate the PowerP
 ```
 
 - A **scene** (`*.scene.json`) is a tree of frames, text, shapes, icons and component instances. Frames lay out like flexbox.
-- **Libraries** (`*.lib.json`) hold a brand's tokens as variables, plus its components and templates.
-- **Edits** address nodes by name path (`"Findings/Column[0]/Claim"`), including nodes inside component instances. `tree` gives the agent a compact outline instead of the raw JSON.
-- **Chrome** lays the scene out and renders it. `render --deck` adds a scrollable `deck.html` and a single `deck.png` for review.
+- A **library** (`*.lib.json`) holds a brand's tokens as variables, plus its components and templates. Templates and components bind every colour, size and font to those tokens.
+- An **edit** addresses a node by its name path, such as `"Findings/Column[0]/Claim"`, including nodes inside component instances. An edit to an instance writes an override into the scene and leaves the library unchanged.
+- **Chrome** lays the scene out and renders it. Fonts and icons ship with the package, so a scene renders the same on any machine with Chrome, without a network connection.
 
-## Why it is powerful
+## Commands
 
-- **Cheap revisions.** A typical text or layout change is one or two commands of about 200 to 600 characters, and lands right first time. A `batch` applies several edits atomically: all of them or none.
-- **Brand-safe by construction.** Templates and components bind every colour, size and font to brand tokens. `lint --brand` flags off-palette colours, clipped or overflowing text, collapsed boxes and connectors that cross boxes.
-- **Deterministic, offline renders.** Fonts and icons ship with the package, so the same scene renders the same pixels on any machine with Chrome.
-- **Diagrams.** `connector` nodes join boxes with straight or right-angled lines, arrows and labels, routed from the real box positions after layout.
-- **Photos with brand treatment.** `asset add` downloads an image next to the scene; `imageFilter: "mono"` gives it the brand's monochrome look without greying the text on top.
-- **Clean hand-off.** `export spec` gives a build agent the text, components and tokens; `export html` gives HTML that keeps the CSS custom properties.
-- **Works with any agent.** Everything is a CLI command. The skill in `skills/aerender/` teaches Claude Code and other agents the workflow, and each brand's `GUIDE.md` teaches its rules.
+Run `aerender <command> --help` for any command.
+
+| To | Run |
+|---|---|
+| See a scene's outline | `aerender tree <file> [--node X] [--depth N] [--all] [--ids]` |
+| Read one node | `aerender get <file> <path>` |
+| Change properties | `aerender set <file> <path> key=value ...` |
+| Add, remove or rearrange nodes | `insert`, `delete`, `move`, `copy` |
+| Apply several edits at once | `aerender batch <file> <ops.json \| ->` (all of them or none) |
+| Render | `aerender render <file> [--node X]... [--out dir] [--scale 2] [--format png\|pdf] [--deck]` |
+| Check the schema | `aerender validate <file>` |
+| Check layout and brand | `aerender lint <file> [--node X] [--brand <id> \| tokens.css]` |
+| Add a photo | `aerender asset add <url-or-path> [--scene file.scene.json] [--name x] [--credit text]` |
+| Turn CSS tokens into a library | `aerender tokens import <tokens.css> --out <name.lib.json>` |
+| Hand off to a build agent | `aerender export spec <file> --node X [--format json\|md]` |
+| Hand off as HTML | `aerender export html <file> --node X --out f.html` |
+| List brands and libraries | `aerender brands [--json]`, `aerender libs` |
+| Read a brand's guide | `aerender brand <id> [--components \| --path]` |
+| Check the install | `aerender doctor`, `aerender --version` |
+
+`render` writes one PNG per top-level frame into `renders/` beside the scene. With `--deck` it also writes a PDF, a scrollable `deck.html` and a single `deck.png` of every slide. Render stops on errors such as an unknown variable or component; fix them, or pass `--force` to see the partial result.
+
+`lint` flags colours outside the brand palette, clipped or overflowing text, collapsed boxes and connectors that cross boxes.
+
+`export spec` gives a build agent the text, components and tokens of a node. `export html` gives HTML that keeps the tokens as CSS custom properties.
 
 ## Examples
 
-Every example is in `examples/`, uses fictional data, and renders with `aerender render <file>`.
+Every example is in `examples/` and uses fictional data.
 
 ### A product dashboard
-
-![Dashboard built from the AnalystEngine UI library](docs/images/dashboard.jpg)
 
 ```
 aerender render examples/dashboard/dashboard.scene.json
@@ -65,12 +111,14 @@ aerender render examples/one-pager/one-pager.scene.json --format pdf
 
 ![Flow diagram with a decision and a loop-back](docs/images/flow.jpg)
 
+`connector` nodes join boxes with straight or right-angled lines, arrows and labels. They are routed from the boxes' positions after layout, so moving a box moves its lines:
+
 ```
 aerender render examples/flow/flow.scene.json
 aerender set examples/flow/flow.scene.json "Contain" x=860
 ```
 
-### A slide deck in deck view
+### A slide deck
 
 ![Six-slide deck](docs/images/deck.jpg)
 
@@ -78,7 +126,7 @@ aerender set examples/flow/flow.scene.json "Contain" x=860
 aerender render examples/deck/deck.scene.json --deck   # slide PNGs, deck.pdf, deck.html, deck.png
 ```
 
-### A revision loop on one slide
+A revision to one slide:
 
 ```
 aerender tree examples/deck/deck.scene.json --node Findings
@@ -86,7 +134,7 @@ aerender set examples/deck/deck.scene.json "Findings/Headline" content="Three ga
 aerender render examples/deck/deck.scene.json --node Findings
 ```
 
-Several changes in one atomic step:
+Several changes in one step:
 
 ```
 aerender batch examples/deck/deck.scene.json '[
@@ -94,47 +142,14 @@ aerender batch examples/deck/deck.scene.json '[
   {"op":"move","path":"Recommendations","to":"/","index":1}]'
 ```
 
-### Bring your own brand
+### A brand of your own
 
 ![Social card in the fictional Brightwater brand](docs/images/example-brand.jpg)
 
 ```
-aerender tokens import brand.css --out brand/tokens.lib.json
 aerender render examples/example-brand/social.scene.json
 aerender lint examples/example-brand/social.scene.json --brand example
 ```
-
-## Install
-
-You need Node 22 or later and Chrome or Chromium.
-
-```
-npm install -g github:AnalystEngine/aerender
-aerender doctor
-```
-
-`doctor` checks Node, Chrome, fonts, icons and the brand libraries, renders a test scene, and prints a fix for anything missing. aerender looks for Chrome in `AERENDER_CHROME`, then on the `PATH` (`google-chrome`, `chromium`), then in a Playwright install (`npx playwright install chromium`).
-
-Install the skill for your agent:
-
-```
-npx skills add AnalystEngine/aerender
-```
-
-Or copy `skills/aerender/` into a project's `.claude/skills/`. The skill's setup step installs the CLI if it is missing.
-
-## Quick start
-
-```
-echo '{"aerender":1,"imports":{"a":"aerender:analystengine/assets"},"children":[]}' > post.scene.json
-aerender insert post.scene.json / '{"type":"ref","ref":"a:aSocial","name":"Card"}'
-aerender set post.scene.json "Card/Headline" content="Review AI tools before staff adopt them"
-aerender tree post.scene.json
-aerender render post.scene.json                       # renders/card@2x.png
-aerender lint post.scene.json --brand analystengine
-```
-
-Run `aerender <command> --help` for any command, `aerender brands` for the brands, and `aerender libs` for their libraries.
 
 ## Brands
 
@@ -144,10 +159,12 @@ A brand is a folder of tokens, libraries and a guide. `aerender brands` lists ev
 
 | Brand | Libraries | Purpose |
 |---|---|---|
-| `analystengine` | `aerender:analystengine/tokens`, `/ui`, `/assets`, `/slides` | AnalystEngine's design system: a full worked example covering screens, marketing graphics, documents, slides and diagrams |
+| `analystengine` | `aerender:analystengine/tokens`, `/ui`, `/assets`, `/slides` | AnalystEngine's design system, covering screens, marketing graphics, documents, slides and diagrams |
 | `example` | `aerender:example/tokens`, `/assets` | Brightwater, a fictional brand built from a 30-line CSS file |
 
 ### The brand folder
+
+Other tools build brand folders to this layout, so it changes only deliberately.
 
 ```
 <brand-id>/                 folder name = brand id (lowercase letters, digits, hyphens)
@@ -167,7 +184,7 @@ Folders starting with `_` or `.` are ignored, so keep templates as `_template/`.
 Keep private and client brands in your own directories and list them in `AERENDER_BRANDS`, separated by colons:
 
 ```
-export AERENDER_BRANDS='$HOME/brands:/srv/shared/*/brands'
+export AERENDER_BRANDS='$HOME/brands:$HOME/clients/*/brands'
 ```
 
 aerender expands `$VAR` and `${VAR}` itself, so the variable works even when set unexpanded, and matches `*` against directory names. It skips an entry that names an unset variable. It searches each entry in order, then the built-in brands, and skips directories that do not exist. When two directories hold the same brand id, the first wins and `aerender brands` notes the one it hides. Never commit a private brand to this repository.
@@ -177,13 +194,13 @@ aerender expands `$VAR` and `${VAR}` itself, so the variable works even when set
 1. Write the brand's colours, fonts, sizes and spacing as CSS custom properties in a `tokens.css`.
 2. Run `aerender tokens import tokens.css --out tokens.lib.json`.
 3. Build templates and components bound to those variables with `aerender batch`.
-4. Write `GUIDE.md`, put the folder in a directory listed in `AERENDER_BRANDS`, and check it with `aerender brands` and `aerender lint --brand <id>`.
+4. Write `GUIDE.md`, put the folder in a directory listed in `AERENDER_BRANDS`, and check it with `aerender brands` and `aerender lint <file> --brand <id>`.
 
 The full guide is `skills/aerender/references/new-design-system.md`, and `brands/example/` is the worked example.
 
 ## The skill
 
-`skills/aerender/` covers setup, choosing a brand, the edit and render workflow, and commands, with references on the format, composition for each kind of visual, and building a new brand. Brand rules live in each brand's `GUIDE.md`, not in the skill.
+`skills/aerender/SKILL.md` covers setup, choosing a brand, the edit and render workflow, and the commands. Its references cover the scene format, composing each kind of visual, and building a new brand. Brand rules live in each brand's `GUIDE.md`, not in the skill.
 
 ## Limitations
 
@@ -193,7 +210,7 @@ The full guide is `skills/aerender/references/new-design-system.md`, and `brands
 - Only the bundled fonts (Inter Tight, Inter, JetBrains Mono, Noto Sans) render exactly; other families fall back.
 - Rendering needs Chrome or Chromium on the machine.
 
-## Contributing and tests
+## Developing aerender
 
 ```
 npm ci
@@ -201,8 +218,8 @@ npm test            # integration tests: render the examples and fixtures in Chr
 npm run typecheck
 ```
 
-[CLAUDE.md](CLAUDE.md) describes the architecture, how to add a node type or property, and the rules for keeping the skills in step with the CLI.
+[CLAUDE.md](CLAUDE.md) describes the architecture, how to add a node type or property, how to regenerate the brand libraries, and the rules for keeping the skill in step with the CLI.
 
 ## Licence
 
-To be confirmed.
+No licence is granted; AnalystEngine reserves all rights.
