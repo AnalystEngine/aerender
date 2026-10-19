@@ -4,9 +4,35 @@ Mock up any visual from a JSON scene, so you can agree it before you build it.
 
 aerender is a command-line tool for AI agents and the people they work with. An agent describes a screen, a dashboard, a social graphic, an A4 page, a flow diagram or a slide deck as a small JSON scene, and aerender renders it to PNG or PDF. You look at the picture and ask for changes in plain words, and the agent makes each change with one or two commands of a few hundred characters. Front-end code or the real deck is built only once the mockup is agreed, so revisions happen while they are still cheap.
 
+Every picture below is a scene in `examples/`, rendered by aerender in AnalystEngine's design system. The last one uses Brightwater, a fictional brand built from a 28-line CSS file.
+
+## What it draws
+
+**Product screens and dashboards**
+
 ![Dashboard mocked up with the AnalystEngine UI library](docs/images/dashboard.jpg)
 
-## Install
+**Social and marketing graphics:** a 1200x630 card and a 1080x1080 LinkedIn square
+
+![Social card and LinkedIn square](docs/images/social.jpg)
+
+**A4 documents:** a report cover and a one-page summary, rendered to PDF
+
+![A4 report cover and one-page summary](docs/images/one-pager.jpg)
+
+**Flow diagrams:** connectors are routed from the boxes' positions after layout, so moving a box moves its lines
+
+![Flow diagram with a decision and a loop-back](docs/images/flow.jpg)
+
+**Slide decks:** each slide as a PNG, the deck as a PDF, and a scrollable deck view for review
+
+![Six-slide deck](docs/images/deck.jpg)
+
+**Your own brand:** the same templates and checks, in a brand built from your CSS
+
+![Social card in the fictional Brightwater brand](docs/images/example-brand.jpg)
+
+## Quick start
 
 You need Node 22 or later and Chrome or Chromium.
 
@@ -15,17 +41,9 @@ npm install -g github:AnalystEngine/aerender
 aerender doctor
 ```
 
-`doctor` checks Node, Chrome, fonts, icons and the brand libraries, renders a test scene, and prints a fix for anything missing. aerender looks for Chrome in `AERENDER_CHROME` first, then on the `PATH` (`google-chrome`, `google-chrome-stable`, `chromium`, `chromium-browser`, `chrome`), then in a Playwright install (`npx playwright install chromium`).
+`doctor` checks Node, Chrome, fonts, icons and the brand libraries, renders a test scene, and prints a fix for anything missing.
 
-Then install the skill, which teaches your agent the workflow:
-
-```
-npx skills add AnalystEngine/aerender
-```
-
-Or copy `skills/aerender/` into a project's `.claude/skills/`. If the CLI is missing, the skill's setup step installs it.
-
-## Quick start
+Then make your first graphic:
 
 ```
 echo '{"aerender":1,"imports":{"a":"aerender:analystengine/assets"},"children":[]}' > post.scene.json
@@ -37,6 +55,24 @@ aerender lint post.scene.json --brand analystengine
 ```
 
 This creates a scene that imports the AnalystEngine marketing templates, places a social card, changes its headline, prints an outline, renders the card and checks it against the brand.
+
+To render any of the pictures above, run `aerender render` on its scene in `examples/`. Add `--deck` for the slide deck and `--format pdf` for the A4 pages.
+
+### Use it from your agent
+
+The skill teaches an agent the workflow:
+
+```
+npx skills add AnalystEngine/aerender
+```
+
+Or copy `skills/aerender/` into a project's `.claude/skills/`. If the CLI is missing, the skill's setup step installs it.
+
+## Work with AnalystEngine
+
+AnalystEngine is a London-based AI engineering consultancy that helps firms design, build and integrate AI systems. It built aerender for its own design and reporting work, and the `analystengine` brand in this repository is the design system it uses for every visual that carries its name.
+
+If you need help with AI engineering, [tell AnalystEngine what you are working on](https://www.analystengine.io/contact). Its case studies and its writing on AI engineering, governance and cybersecurity are at [analystengine.io](https://www.analystengine.io/).
 
 ## How it works
 
@@ -51,6 +87,22 @@ This creates a scene that imports the AnalystEngine marketing templates, places 
 - A **library** (`*.lib.json`) holds a brand's tokens as variables, plus its components and templates. Templates and components bind every colour, size and font to those tokens.
 - An **edit** addresses a node by its name path, such as `"Findings/Column[0]/Claim"`, including nodes inside component instances. An edit to an instance writes an override into the scene and leaves the library unchanged.
 - **Chrome** lays the scene out and renders it. Fonts and icons ship with the package, so a scene renders the same on any machine with Chrome, without a network connection.
+
+A revision to one slide of the example deck looks like this:
+
+```
+aerender tree examples/deck/deck.scene.json --node Findings
+aerender set examples/deck/deck.scene.json "Findings/Headline" content="Three gaps put member data at risk"
+aerender render examples/deck/deck.scene.json --node Findings
+```
+
+`batch` makes several changes in one step, and applies all of them or none:
+
+```
+aerender batch examples/deck/deck.scene.json '[
+  {"op":"set","path":"Findings/Column[0]/Claim","props":{"content":"11 of 14 tools were never reviewed"}},
+  {"op":"move","path":"Recommendations","to":"/","index":1}]'
+```
 
 ## Commands
 
@@ -80,76 +132,7 @@ Run `aerender <command> --help` for any command.
 
 `export spec` gives a build agent the text, components and tokens of a node. `export html` gives HTML that keeps the tokens as CSS custom properties.
 
-## Examples
-
-Every example is in `examples/` and uses fictional data.
-
-### A product dashboard
-
-```
-aerender render examples/dashboard/dashboard.scene.json
-aerender set examples/dashboard/dashboard.scene.json "KPI findings/Value" content="41"
-```
-
-### Social and marketing graphics
-
-![Social card and LinkedIn square](docs/images/social.jpg)
-
-```
-aerender render examples/social/social.scene.json      # 1200x630 card and 1080x1080 square
-```
-
-### A4 documents
-
-![A4 report cover and one-page summary](docs/images/one-pager.jpg)
-
-```
-aerender render examples/one-pager/one-pager.scene.json --format pdf
-```
-
-### A flow diagram
-
-![Flow diagram with a decision and a loop-back](docs/images/flow.jpg)
-
-`connector` nodes join boxes with straight or right-angled lines, arrows and labels. They are routed from the boxes' positions after layout, so moving a box moves its lines:
-
-```
-aerender render examples/flow/flow.scene.json
-aerender set examples/flow/flow.scene.json "Contain" x=860
-```
-
-### A slide deck
-
-![Six-slide deck](docs/images/deck.jpg)
-
-```
-aerender render examples/deck/deck.scene.json --deck   # slide PNGs, deck.pdf, deck.html, deck.png
-```
-
-A revision to one slide:
-
-```
-aerender tree examples/deck/deck.scene.json --node Findings
-aerender set examples/deck/deck.scene.json "Findings/Headline" content="Three gaps put member data at risk"
-aerender render examples/deck/deck.scene.json --node Findings
-```
-
-Several changes in one step:
-
-```
-aerender batch examples/deck/deck.scene.json '[
-  {"op":"set","path":"Findings/Column[0]/Claim","props":{"content":"11 of 14 tools were never reviewed"}},
-  {"op":"move","path":"Recommendations","to":"/","index":1}]'
-```
-
-### A brand of your own
-
-![Social card in the fictional Brightwater brand](docs/images/example-brand.jpg)
-
-```
-aerender render examples/example-brand/social.scene.json
-aerender lint examples/example-brand/social.scene.json --brand example
-```
+aerender looks for Chrome in `AERENDER_CHROME` first, then on the `PATH` (`google-chrome`, `google-chrome-stable`, `chromium`, `chromium-browser`, `chrome`), then in a Playwright install (`npx playwright install chromium`).
 
 ## Brands
 
@@ -160,7 +143,7 @@ A brand is a folder of tokens, libraries and a guide. `aerender brands` lists ev
 | Brand | Libraries | Purpose |
 |---|---|---|
 | `analystengine` | `aerender:analystengine/tokens`, `/ui`, `/assets`, `/slides` | AnalystEngine's design system, covering screens, marketing graphics, documents, slides and diagrams |
-| `example` | `aerender:example/tokens`, `/assets` | Brightwater, a fictional brand built from a 30-line CSS file |
+| `example` | `aerender:example/tokens`, `/assets` | Brightwater, a fictional brand built from a 28-line CSS file |
 
 ### The brand folder
 
@@ -222,4 +205,4 @@ npm run typecheck
 
 ## Licence
 
-No licence is granted; AnalystEngine reserves all rights.
+aerender is licensed under the [Apache License 2.0](LICENSE). The licence does not grant permission to use the AnalystEngine name, logo or brand, apart from describing where the work came from (section 6).
