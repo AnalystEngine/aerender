@@ -205,4 +205,4 @@ npm run typecheck
 
 ## Licence
 
-aerender is licensed under the [Apache License 2.0](LICENSE). The licence does not grant permission to use the AnalystEngine name, logo or brand, apart from describing where the work came from (section 6).
+aerender is licensed under the [Apache License 2.0](LICENSE), including the AnalystEngine design system in `brands/analystengine/`. The licence does not grant permission to use the AnalystEngine name, logo or other trademarks, except to describe where the work came from (section 6).
