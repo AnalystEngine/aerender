@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Mock up any visual from a JSON scene (screens, dashboards, marketing graphics, documents, diagrams and slides) so you can agree it before you build it.",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "type": "module",
   "repository": {
     "type": "git",
